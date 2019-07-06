@@ -7,3 +7,48 @@ import {
 import {
     requestUrl
 } from '../default' // 请求URL
+
+//注册
+export const register = (data) => {
+    return post(`${requestUrl}/users/register`, data);
+}
+
+//登录
+export const login = (data) => {
+    return post(`${requestUrl}/users/login`, data);
+}
+
+//注销
+export const logout = () => {
+    return post(`${requestUrl}/users/logout`);
+}
+
+//修改密码
+export const changePassword = (data) => {
+    return post(`${requestUrl}/users/changePassword`, data);
+}
+
+// 获取登录用户信息
+export const getUserInfo = () => {
+    return get(`${requestUrl}/users/userInfo`);
+}
+
+// 获取用户列表
+export const getUsers = (data) => {
+    return get(`${requestUrl}/users`, data);
+}
+
+// 修改用户信息
+export const putUser = (id, data) => {
+    return put(`${requestUrl}/users/${id}`, data);
+}
+
+// 删除用户
+export const deleteUser = (id) => {
+    return deletes(`${requestUrl}/users/${id}`);
+}
+
+//新增图片
+export const postImage = (data) => {
+    return post(`${requestUrl}/images`, data);
+}

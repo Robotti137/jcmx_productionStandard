@@ -23,7 +23,7 @@ service.interceptors.response.use(
             router.push('/blank.vue')
         }
 
-        if (error.response.status == 403 && error.response.data.code === 0) {
+        if (error.response.status == 403 && error.response.data.code === -1) {
             router.push('/login')
         }
 

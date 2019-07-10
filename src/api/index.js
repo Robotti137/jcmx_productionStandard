@@ -52,3 +52,13 @@ export const deleteUser = (id) => {
 export const postImage = (data) => {
     return post(`${requestUrl}/images`, data);
 }
+
+//获取图库
+export const getImages = (data) => {
+    return get(`${requestUrl}/images`, data);
+}
+
+// 删除图片
+export const deleteImage = (id) => {
+    return deletes(`${requestUrl}/images/${id}`);
+}

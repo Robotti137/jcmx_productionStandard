@@ -1,5 +1,5 @@
 <template>
-  <div style="padding:10px 22px 15px;border-bottom:1px dashed #8d8787;">
+  <div>
     <el-button type="primary" size="small" @click="imageDialogVisible = true">添加图片</el-button>
 
     <!-- 新增图片弹框 -->
@@ -49,6 +49,8 @@
 <script>
 import { postImage } from "@/api";
 import { requestUrl } from "@/default";
+import { createNamespacedHelpers } from "vuex";
+const { mapActions, mapMutations } = createNamespacedHelpers("gallery");
 let loading = false;
 export default {
   data() {
@@ -77,18 +79,20 @@ export default {
       }
     };
   },
-  computed:{
-    close:{
-      get(){
-        return this.imageDialogVisible
+  computed: {
+    close: {
+      get() {
+        return this.imageDialogVisible;
       },
-      set(value){
+      set(value) {
         this.imageDialogVisible = value;
         this.emptyForm();
       }
     }
   },
   methods: {
+    ...mapActions(["getImageList"]),
+    ...mapMutations(["setImageList", "setCurrentPage"]),
     handleRemove(file, fileList) {
       this.imageData.imgPath = "";
     },
@@ -97,7 +101,7 @@ export default {
       this.bigImagedialogVisible = true;
     },
     handleSuccess(response, file) {
-      this.imageData.imgPath = file.url;
+      this.imageData.imgPath = response.filename;
     },
     imgAdd() {
       if (loading) {
@@ -127,6 +131,9 @@ export default {
           if (data.status === 1) {
             type = "success";
             this.imageDialogVisible = false;
+            this.setImageList([]);
+            this.setCurrentPage(1);
+            this.getImageList();
             this.emptyForm();
           } else {
             type = "error";
@@ -141,7 +148,7 @@ export default {
     emptyForm() {
       const { imageForm, imageUpload } = this.$refs;
       imageForm.resetFields();
-      this.imageData.imgPath = '';
+      this.imageData.imgPath = "";
       imageUpload.clearFiles();
     }
   }

@@ -62,3 +62,8 @@ export const getImages = (data) => {
 export const deleteImage = (id) => {
     return deletes(`${requestUrl}/images/${id}`);
 }
+
+// 获取某个类型的图片
+export const getImageList = (data) => {
+    return get(`${requestUrl}/images/imageList`, data);
+}

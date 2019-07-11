@@ -7,6 +7,7 @@ const Manage = () => import('../components/Manage')
 const index = () => import('../components')
 const User = () => import('../components/user')
 const Gallery = () => import('../components/gallery')
+const Add = () => import('../components/order/add')
 
 Vue.use(VueRouter)
 
@@ -48,6 +49,15 @@ let router = new VueRouter({
                     meta: {
                         '首页': '/manage/index',
                         '图库管理': '/manage/gallery'
+                    }
+                },
+                {
+                    path: '/manage/order/add',
+                    component: Add,
+                    meta: {
+                        '首页': '/manage/index',
+                        '项目制作单': '',
+                        '添加项目制作单': '/manage/order'
                     }
                 }
             ]

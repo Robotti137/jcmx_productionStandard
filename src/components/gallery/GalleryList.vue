@@ -21,6 +21,7 @@
             style="font-size:20px;color:#fff;cursor: pointer;"
           ></i>
         </span>
+        <span class="remark">{{item.remark}}</span>
       </li>
       <li v-show="loading" style="width:100%;height:30px;font-size:16px;">暂无更多数据</li>
     </ul>
@@ -152,5 +153,13 @@ export default {
   text-align: center;
   line-height: 146px;
   background-color: rgba(0, 0, 0, 0.5);
+}
+
+.remark {
+  display: inline-block;
+  width: 100%;
+  height: 20px;
+  font-size: 12px;
+  color: #888888;
 }
 </style>

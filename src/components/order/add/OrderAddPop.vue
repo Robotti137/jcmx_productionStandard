@@ -2,17 +2,20 @@
   <el-dialog width="70%" :visible.sync="imgListdialogVisible">
     <ul style=" display:flex;flex-wrap:wrap;overflow:auto;">
       <li v-for="(item,index) in imageList" :key="index">
-        <img :src="requestUrl + '/upload/' + item.imgPath" :title="item.name" />
+        <img
+          :src="requestUrl + '/upload/' + item.imgPath"
+          :title="item.name"
+          @click="returnImageName(item.imgPath)"
+        />
         <span class="remark">{{item.remark}}</span>
       </li>
     </ul>
-    <a @click="test">13213213</a>
   </el-dialog>
 </template>
 
 <script>
 import { createNamespacedHelpers } from "vuex";
-const { mapState, mapActions, mapMutations } = createNamespacedHelpers("order");
+const { mapState, mapMutations } = createNamespacedHelpers("order");
 import { getImageList } from "@/api";
 import { requestUrl } from "@/default";
 export default {
@@ -23,7 +26,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(["type"]),
+    ...mapState(["type", "obj"]),
     imgListdialogVisible: {
       get() {
         return this.$store.state.order.imgListdialogVisible;
@@ -34,12 +37,14 @@ export default {
     }
   },
   methods: {
-    test() {
-      console.log(233);
+    ...mapMutations(["setImgListdialogVisible"]),
+    returnImageName(name) {
+      this.setImgListdialogVisible(false);
+      this.obj.referenceMap = name;
     }
   },
   watch: {
-    type(newValue, oldValue) {
+    type() {
       const { type } = this;
       getImageList({ search: { type } }).then(data => {
         if (data.status === 1) {
@@ -47,6 +52,14 @@ export default {
         }
       });
     }
+  },
+  created() {
+    const { type } = this;
+    getImageList({ search: { type } }).then(data => {
+      if (data.status === 1) {
+        this.imageList = data.list;
+      }
+    });
   }
 };
 </script>

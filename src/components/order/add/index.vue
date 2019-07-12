@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <el-form label-width="155px">
+    <el-form label-width="155px" ref="orderForm">
       <el-form-item label="文档编号">
         <el-input type="text" size="small" v-model="documentNumber"></el-input>
       </el-form-item>
@@ -173,10 +173,10 @@
           <el-upload :action="requestUrl + '/upload'" :on-success="uploadMBMap">
             <el-button size="small" type="primary" plain>自行上传</el-button>
           </el-upload>
-          <el-button size="small" type="primary" plain @click="openGallery(6)">图库选择</el-button>
+          <el-button size="small" type="primary" plain @click="openGallery(6,modelBase)">图库选择</el-button>
           <span class="prompt">注：参考图只能插入一张</span>
         </div>
-        <div v-if="modelBase.referenceMap" class="img-container">
+        <div v-if="modelBase.referenceMap" class="reference-map-container">
           <i class="el-icon-circle-close close" @click="modelBase.referenceMap =''"></i>
           <img class="reference-map" :src="requestUrl + '/upload/' + modelBase.referenceMap" />
         </div>
@@ -202,10 +202,25 @@
       <el-form-item>
         插入参考图
         <br />
-        <el-upload action="https://jsonplaceholder.typicode.com/posts/" :limit="1">
-          <el-button size="small" type="primary" plain>自行上传</el-button>
-        </el-upload>
-        <el-button size="small" type="primary" plain>图库选择</el-button>
+        <div class="flex">
+          <el-upload :action="requestUrl + '/upload'" :on-success="uploadBPFMap">
+            <el-button size="small" type="primary" plain>自行上传</el-button>
+          </el-upload>
+          <el-button
+            size="small"
+            type="primary"
+            plain
+            @click="openGallery(1,buildingProduction.facade)"
+          >图库选择</el-button>
+          <span class="prompt">注：参考图只能插入一张</span>
+        </div>
+        <div v-if="buildingProduction.facade.referenceMap" class="reference-map-container">
+          <i class="el-icon-circle-close close" @click="buildingProduction.facade.referenceMap =''"></i>
+          <img
+            class="reference-map"
+            :src="requestUrl + '/upload/' + buildingProduction.facade.referenceMap"
+          />
+        </div>
       </el-form-item>
       <el-form-item>
         <el-radio-group v-model="buildingProduction.facade.type">
@@ -238,9 +253,28 @@
       <el-form-item>
         插入参考图
         <br />
-        <span class="reference-map">
-          <i class="el-icon-plus"></i>
-        </span>
+        <div class="flex">
+          <el-upload :action="requestUrl + '/upload'" :on-success="uploadBPIFMap">
+            <el-button size="small" type="primary" plain>自行上传</el-button>
+          </el-upload>
+          <el-button
+            size="small"
+            type="primary"
+            plain
+            @click="openGallery(1,buildingProduction.innerFacade)"
+          >图库选择</el-button>
+          <span class="prompt">注：参考图只能插入一张</span>
+        </div>
+        <div v-if="buildingProduction.innerFacade.referenceMap" class="reference-map-container">
+          <i
+            class="el-icon-circle-close close"
+            @click="buildingProduction.innerFacade.referenceMap =''"
+          ></i>
+          <img
+            class="reference-map"
+            :src="requestUrl + '/upload/' + buildingProduction.innerFacade.referenceMap"
+          />
+        </div>
       </el-form-item>
       <el-form-item>
         <el-radio-group v-model="buildingProduction.innerFacade.type">
@@ -277,9 +311,28 @@
       <el-form-item>
         插入参考图
         <br />
-        <span class="reference-map">
-          <i class="el-icon-plus"></i>
-        </span>
+        <div class="flex">
+          <el-upload :action="requestUrl + '/upload'" :on-success="uploadBPBFMap">
+            <el-button size="small" type="primary" plain>自行上传</el-button>
+          </el-upload>
+          <el-button
+            size="small"
+            type="primary"
+            plain
+            @click="openGallery(1,buildingProduction.businessFacade)"
+          >图库选择</el-button>
+          <span class="prompt">注：参考图只能插入一张</span>
+        </div>
+        <div v-if="buildingProduction.businessFacade.referenceMap" class="reference-map-container">
+          <i
+            class="el-icon-circle-close close"
+            @click="buildingProduction.businessFacade.referenceMap =''"
+          ></i>
+          <img
+            class="reference-map"
+            :src="requestUrl + '/upload/' + buildingProduction.businessFacade.referenceMap"
+          />
+        </div>
       </el-form-item>
       <el-form-item>
         <el-radio-group v-model="buildingProduction.businessFacade.type">
@@ -321,9 +374,28 @@
       <el-form-item>
         插入参考图
         <br />
-        <span class="reference-map">
-          <i class="el-icon-plus"></i>
-        </span>
+        <div class="flex">
+          <el-upload :action="requestUrl + '/upload'" :on-success="uploadIPLRMap">
+            <el-button size="small" type="primary" plain>自行上传</el-button>
+          </el-upload>
+          <el-button
+            size="small"
+            type="primary"
+            plain
+            @click="openGallery(2,landscapeProduction.landscapeRoad)"
+          >图库选择</el-button>
+          <span class="prompt">注：参考图只能插入一张</span>
+        </div>
+        <div v-if="landscapeProduction.landscapeRoad.referenceMap" class="reference-map-container">
+          <i
+            class="el-icon-circle-close close"
+            @click="landscapeProduction.landscapeRoad.referenceMap =''"
+          ></i>
+          <img
+            class="reference-map"
+            :src="requestUrl + '/upload/' + landscapeProduction.landscapeRoad.referenceMap"
+          />
+        </div>
       </el-form-item>
       <el-form-item>
         景观道路
@@ -362,9 +434,28 @@
       <el-form-item>
         插入参考图
         <br />
-        <span class="reference-map">
-          <i class="el-icon-plus"></i>
-        </span>
+        <div class="flex">
+          <el-upload :action="requestUrl + '/upload'" :on-success="uploadIPWPLMap">
+            <el-button size="small" type="primary" plain>自行上传</el-button>
+          </el-upload>
+          <el-button
+            size="small"
+            type="primary"
+            plain
+            @click="openGallery(2,landscapeProduction.WaterPerformanceLight)"
+          >图库选择</el-button>
+          <span class="prompt">注：参考图只能插入一张</span>
+        </div>
+        <div v-if="landscapeProduction.WaterPerformanceLight.referenceMap" class="reference-map-container">
+          <i
+            class="el-icon-circle-close close"
+            @click="landscapeProduction.WaterPerformanceLight.referenceMap =''"
+          ></i>
+          <img
+            class="reference-map"
+            :src="requestUrl + '/upload/' + landscapeProduction.WaterPerformanceLight.referenceMap"
+          />
+        </div>
       </el-form-item>
       <el-form-item>
         <el-radio-group v-model="landscapeProduction.WaterPerformanceLight.type">
@@ -402,9 +493,28 @@
       <el-form-item>
         插入参考图
         <br />
-        <span class="reference-map">
-          <i class="el-icon-plus"></i>
-        </span>
+        <div class="flex">
+          <el-upload :action="requestUrl + '/upload'" :on-success="uploadIPBBMap">
+            <el-button size="small" type="primary" plain>自行上传</el-button>
+          </el-upload>
+          <el-button
+            size="small"
+            type="primary"
+            plain
+            @click="openGallery(2,landscapeProduction.buildingBlock)"
+          >图库选择</el-button>
+          <span class="prompt">注：参考图只能插入一张</span>
+        </div>
+        <div v-if="landscapeProduction.buildingBlock.referenceMap" class="reference-map-container">
+          <i
+            class="el-icon-circle-close close"
+            @click="landscapeProduction.buildingBlock.referenceMap =''"
+          ></i>
+          <img
+            class="reference-map"
+            :src="requestUrl + '/upload/' + landscapeProduction.buildingBlock.referenceMap"
+          />
+        </div>
       </el-form-item>
       <el-form-item>
         其它要求说明
@@ -413,7 +523,7 @@
       </el-form-item>
 
       <el-form-item>
-        <el-button type="primary">创 建</el-button>
+        <el-button type="primary" @click="addOrder">创 建</el-button>
       </el-form-item>
     </el-form>
 
@@ -426,9 +536,14 @@ const OrderAddPop = () => import("./OrderAddPop");
 import { requestUrl } from "@/default";
 import { createNamespacedHelpers } from "vuex";
 const { mapMutations } = createNamespacedHelpers("order");
+import { postOrder } from "@/api";
+let loading = false;
 export default {
   mounted() {
-    document.getElementsByClassName("el-upload-list")[0].style.display = "none";
+    const oUpload = document.getElementsByClassName("el-upload-list");
+    for (let i = 0; i < oUpload.length; i++) {
+      oUpload[i].style.display = "none";
+    }
   },
   data() {
     return {
@@ -511,13 +626,177 @@ export default {
     };
   },
   methods: {
-    ...mapMutations(["setImgListdialogVisible", "setType"]),
+    ...mapMutations(["setImgListdialogVisible", "setType", "setObj"]),
     uploadMBMap(response, file) {
       this.modelBase.referenceMap = response.filename;
     },
-    openGallery(type) {
+    uploadBPFMap(response, file) {
+      this.buildingProduction.facade.referenceMap = response.filename;
+    },
+    uploadBPIFMap(response, file) {
+      this.buildingProduction.innerFacade.referenceMap = response.filename;
+    },
+    uploadBPBFMap(response, file) {
+      this.buildingProduction.businessFacade.referenceMap = response.filename;
+    },
+    uploadIPLRMap(response, file) {
+      this.landscapeProduction.landscapeRoad.referenceMap = response.filename;
+    },
+    uploadIPWPLMap(response, file) {
+      this.landscapeProduction.WaterPerformanceLight.referenceMap =
+        response.filename;
+    },
+    uploadIPBBMap(response, file) {
+      this.landscapeProduction.buildingBlock.referenceMap = response.filename;
+    },
+    openGallery(type, obj) {
       this.setImgListdialogVisible(true);
       this.setType(type);
+      this.setObj(obj);
+    },
+    addOrder() {
+      if (loading) {
+        return;
+      }
+
+      const {
+        documentNumber,
+        projectName,
+        orderDate,
+        completeDate,
+        projectPrincipal,
+        projectPlanner,
+        salesman,
+        projectAddress,
+        projectSandTable,
+        liftingEquipment,
+        other,
+        productionType,
+        modelBase,
+        buildingProduction,
+        landscapeProduction
+      } = this;
+
+      if (!documentNumber || !projectName) {
+        this.$notify.error({
+          title: "错误",
+          message: "文档编号与项目名称为必填"
+        });
+        return;
+      }
+
+      const sendData = {
+        documentNumber,
+        projectName,
+        orderDate,
+        completeDate,
+        projectPrincipal,
+        projectPlanner,
+        salesman,
+        projectAddress,
+        projectSandTable,
+        liftingEquipment,
+        other,
+        productionType,
+        modelBase,
+        buildingProduction,
+        landscapeProduction
+      };
+
+      loading = true;
+      postOrder(sendData).then(data => {
+        loading = false;
+        let type;
+        if (data.status === 1) {
+          type = "success";
+          this.clearForm();
+        } else {
+          type = "error";
+        }
+        this.$message({
+          message: data.message,
+          type
+        });
+      });
+    },
+
+    //清空整个表单
+    clearForm() {
+      this.documentNumber = "";
+      this.projectName = "";
+      this.orderDate = "";
+      this.completeDate = "";
+      this.projectPrincipal = "";
+      this.projectPlanner = "";
+      this.salesman = "";
+      this.projectAddress = "";
+      this.projectSandTable = {
+        number: 0,
+        landscape: "",
+        building: "",
+        externalDimensions: "",
+        innerDimension: ""
+      };
+      this.liftingEquipment = {
+        number: 0,
+        type: ""
+      };
+      this.other = {
+        number: 0,
+        landscape: "",
+        building: "",
+        externalDimensions: "",
+        innerDimension: ""
+      };
+      this.productionType = "";
+      this.modelBase = {
+        projectSandTableType: [],
+        referenceMap: "",
+        marbleType: "",
+        footLineLighting: "",
+        description: ""
+      };
+      this.buildingProduction = {
+        facade: {
+          referenceMap: "",
+          type: "",
+          description: ""
+        },
+        abs: "",
+        innerFacade: {
+          referenceMap: "",
+          type: "",
+          internalLight: "",
+          contourLight: "",
+          description: ""
+        },
+        businessFacade: {
+          referenceMap: "",
+          type: "",
+          description: ""
+        }
+      };
+      this.landscapeProduction = {
+        landscapePerformance: "",
+        gardenScenery: "",
+        landscapeRoad: {
+          referenceMap: "",
+          type: "",
+          description: ""
+        },
+        terrainPerformance: "",
+        landscapeLight: [],
+        WaterPerformanceLight: {
+          referenceMap: "",
+          type: "",
+          description: ""
+        },
+        crystalPerformanceLight: [],
+        buildingBlock: {
+          referenceMap: "",
+          description: ""
+        }
+      };
     }
   },
   components: {
@@ -547,7 +826,7 @@ export default {
   margin-left: 10px;
   height: 32px;
 }
-.img-container {
+.reference-map-container {
   position: relative;
   width: 148px;
   height: 148px;

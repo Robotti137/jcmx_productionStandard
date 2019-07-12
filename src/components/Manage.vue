@@ -13,11 +13,11 @@
           <i class="el-icon-menu"></i>
           <span slot="title">首页</span>
         </el-menu-item>
-        <el-menu-item index="/manage/user" v-if="userInfo">
+        <el-menu-item index="/manage/user" v-if="userInfo.permission === 1">
           <i class="el-icon-s-custom"></i>
           <span>用户管理</span>
         </el-menu-item>
-        <el-menu-item index="/manage/gallery" v-if="userInfo">
+        <el-menu-item index="/manage/gallery" v-if="userInfo.permission === 1">
           <i class="el-icon-picture"></i>
           <span>图库管理</span>
         </el-menu-item>
@@ -27,7 +27,7 @@
             <span>项目制作单</span>
           </template>
           <el-menu-item index="/manage/order/add">添加项目制作单</el-menu-item>
-          <el-menu-item index="">项目制作单列表</el-menu-item>
+          <el-menu-item index="/manage/order/list">项目制作单列表</el-menu-item>
         </el-submenu>
       </el-menu>
     </el-aside>

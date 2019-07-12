@@ -67,3 +67,13 @@ export const deleteImage = (id) => {
 export const getImageList = (data) => {
     return get(`${requestUrl}/images/imageList`, data);
 }
+
+// 新增项目制作单
+export const postOrder = (data) => {
+    return post(`${requestUrl}/order`, data);
+}
+
+// 获取项目制作单
+export const getOrder = (data) => {
+    return get(`${requestUrl}/order`, data);
+}

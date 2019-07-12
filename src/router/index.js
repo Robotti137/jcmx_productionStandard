@@ -8,6 +8,7 @@ const index = () => import('../components')
 const User = () => import('../components/user')
 const Gallery = () => import('../components/gallery')
 const Add = () => import('../components/order/add')
+const List = () => import('../components/order/list')
 
 Vue.use(VueRouter)
 
@@ -58,6 +59,15 @@ let router = new VueRouter({
                         '首页': '/manage/index',
                         '项目制作单': '',
                         '添加项目制作单': '/manage/order'
+                    }
+                },
+                {
+                    path: '/manage/order/list',
+                    component: List,
+                    meta: {
+                        '首页': '/manage/index',
+                        '项目制作单': '',
+                        '项目制作单列表': '/manage/list'
                     }
                 }
             ]

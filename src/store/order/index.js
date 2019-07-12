@@ -3,7 +3,7 @@ export default {
     state: {
         imgListdialogVisible: false,
         type: "",
-        imageName: ""
+        obj: {}
     },
     mutations: {
         setImgListdialogVisible(state, value) {
@@ -12,8 +12,8 @@ export default {
         setType(state, value) {
             state.type = value;
         },
-        setImageNmae(state, value) {
-            state.imageName = value;
+        setObj(state, value) {
+            state.obj = value;
         }
     },
     actions: {}

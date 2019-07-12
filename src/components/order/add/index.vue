@@ -680,10 +680,10 @@ export default {
         landscapeProduction
       } = this;
 
-      if (!documentNumber || !projectName) {
+      if (!documentNumber || !projectName || !salesman) {
         this.$notify.error({
           title: "错误",
-          message: "文档编号与项目名称为必填"
+          message: "文档编号/项目名称/业务员为必填项"
         });
         return;
       }

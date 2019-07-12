@@ -9,6 +9,7 @@ const User = () => import('../components/user')
 const Gallery = () => import('../components/gallery')
 const Add = () => import('../components/order/add')
 const List = () => import('../components/order/list')
+const Template = () => import('../components/order/Template')
 
 Vue.use(VueRouter)
 
@@ -25,6 +26,10 @@ let router = new VueRouter({
         {
             path: '/register',
             component: Register
+        },
+        {
+            path:'/template',
+            component: Template
         },
         {
             path: '/manage',

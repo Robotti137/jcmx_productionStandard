@@ -77,3 +77,13 @@ export const postOrder = (data) => {
 export const getOrder = (data) => {
     return get(`${requestUrl}/order`, data);
 }
+
+//删除项目制作单
+export const deleteOrder = (id) => {
+    return deletes(`${requestUrl}/order/${id}`);
+}
+
+//修改项目制作单
+export const putOrder = (id, data) => {
+    return put(`${requestUrl}/order/${id}`, data);
+}

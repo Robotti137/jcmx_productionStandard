@@ -446,7 +446,10 @@
           >图库选择</el-button>
           <span class="prompt">注：参考图只能插入一张</span>
         </div>
-        <div v-if="landscapeProduction.WaterPerformanceLight.referenceMap" class="reference-map-container">
+        <div
+          v-if="landscapeProduction.WaterPerformanceLight.referenceMap"
+          class="reference-map-container"
+        >
           <i
             class="el-icon-circle-close close"
             @click="landscapeProduction.WaterPerformanceLight.referenceMap =''"
@@ -474,15 +477,15 @@
         <el-checkbox-group v-model="landscapeProduction.crystalPerformanceLight">
           <el-checkbox label="透明水晶"></el-checkbox>
           <el-checkbox label="底板金色材质板"></el-checkbox>
-          <el-checkbox label="整体透光"></el-checkbox>
+          <el-checkbox label="整体透光（透明水晶）"></el-checkbox>
           <el-checkbox label="底板贴银铂纸"></el-checkbox>
           <el-checkbox label="住宅水晶高度"></el-checkbox>
           <el-checkbox label="亚克力镜面体块"></el-checkbox>
           <el-checkbox label="贴膜勾窗线体块"></el-checkbox>
-          <el-checkbox label="磨砂亚克力"></el-checkbox>
+          <el-checkbox label="磨砂亚克力体块"></el-checkbox>
           <el-checkbox label="金色水晶"></el-checkbox>
           <el-checkbox label="底板轮廊灯（白色）"></el-checkbox>
-          <el-checkbox label="整体透光"></el-checkbox>
+          <el-checkbox label="整体透光（金色水晶）"></el-checkbox>
           <el-checkbox label="底板贴银布"></el-checkbox>
           <el-checkbox label="商业水晶高度"></el-checkbox>
           <el-checkbox label="商业勾线镜面体块"></el-checkbox>

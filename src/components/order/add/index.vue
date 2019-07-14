@@ -170,14 +170,24 @@
         插入参考图
         <br />
         <div class="flex">
-          <el-upload :action="requestUrl + '/upload'" :on-success="uploadMBMap">
+          <el-upload
+            :action="requestUrl + '/upload'"
+            :limit="1"
+            accept=".png, .PNG, .jpg, .JPG, .jpeg, .JPEG"
+            :on-success="uploadMBMap"
+            :before-upload="beforeUpload"
+            ref="uploadMBMap"
+          >
             <el-button size="small" type="primary" plain>自行上传</el-button>
           </el-upload>
           <el-button size="small" type="primary" plain @click="openGallery(6,modelBase)">图库选择</el-button>
-          <span class="prompt">注：参考图只能插入一张</span>
+          <span class="prompt">注：参考图只能插入一张,且大小不能超出500kb</span>
         </div>
         <div v-if="modelBase.referenceMap" class="reference-map-container">
-          <i class="el-icon-circle-close close" @click="modelBase.referenceMap =''"></i>
+          <i
+            class="el-icon-circle-close close"
+            @click="modelBase.referenceMap ='';$refs.uploadMBMap.clearFiles()"
+          ></i>
           <img class="reference-map" :src="requestUrl + '/upload/' + modelBase.referenceMap" />
         </div>
       </el-form-item>
@@ -203,7 +213,14 @@
         插入参考图
         <br />
         <div class="flex">
-          <el-upload :action="requestUrl + '/upload'" :on-success="uploadBPFMap">
+          <el-upload
+            :action="requestUrl + '/upload'"
+            :limit="1"
+            accept=".png, .PNG, .jpg, .JPG, .jpeg, .JPEG"
+            :on-success="uploadBPFMap"
+            :before-upload="beforeUpload"
+            ref="uploadBPFMap"
+          >
             <el-button size="small" type="primary" plain>自行上传</el-button>
           </el-upload>
           <el-button
@@ -212,10 +229,13 @@
             plain
             @click="openGallery(1,buildingProduction.facade)"
           >图库选择</el-button>
-          <span class="prompt">注：参考图只能插入一张</span>
+          <span class="prompt">注：参考图只能插入一张,且大小不能超出500kb</span>
         </div>
         <div v-if="buildingProduction.facade.referenceMap" class="reference-map-container">
-          <i class="el-icon-circle-close close" @click="buildingProduction.facade.referenceMap =''"></i>
+          <i
+            class="el-icon-circle-close close"
+            @click="buildingProduction.facade.referenceMap ='';$refs.uploadBPFMap.clearFiles()"
+          ></i>
           <img
             class="reference-map"
             :src="requestUrl + '/upload/' + buildingProduction.facade.referenceMap"
@@ -254,7 +274,14 @@
         插入参考图
         <br />
         <div class="flex">
-          <el-upload :action="requestUrl + '/upload'" :on-success="uploadBPIFMap">
+          <el-upload
+            :action="requestUrl + '/upload'"
+            :limit="1"
+            accept=".png, .PNG, .jpg, .JPG, .jpeg, .JPEG"
+            :on-success="uploadBPIFMap"
+            :before-upload="beforeUpload"
+            ref="uploadBPIFMap"
+          >
             <el-button size="small" type="primary" plain>自行上传</el-button>
           </el-upload>
           <el-button
@@ -263,12 +290,12 @@
             plain
             @click="openGallery(1,buildingProduction.innerFacade)"
           >图库选择</el-button>
-          <span class="prompt">注：参考图只能插入一张</span>
+          <span class="prompt">注：参考图只能插入一张,且大小不能超出500kb</span>
         </div>
         <div v-if="buildingProduction.innerFacade.referenceMap" class="reference-map-container">
           <i
             class="el-icon-circle-close close"
-            @click="buildingProduction.innerFacade.referenceMap =''"
+            @click="buildingProduction.innerFacade.referenceMap ='';$refs.uploadBPIFMap.clearFiles()"
           ></i>
           <img
             class="reference-map"
@@ -312,7 +339,14 @@
         插入参考图
         <br />
         <div class="flex">
-          <el-upload :action="requestUrl + '/upload'" :on-success="uploadBPBFMap">
+          <el-upload
+            :action="requestUrl + '/upload'"
+            :limit="1"
+            accept=".png, .PNG, .jpg, .JPG, .jpeg, .JPEG"
+            :on-success="uploadBPBFMap"
+            :before-upload="beforeUpload"
+            ref="uploadBPBFMap"
+          >
             <el-button size="small" type="primary" plain>自行上传</el-button>
           </el-upload>
           <el-button
@@ -321,12 +355,12 @@
             plain
             @click="openGallery(1,buildingProduction.businessFacade)"
           >图库选择</el-button>
-          <span class="prompt">注：参考图只能插入一张</span>
+          <span class="prompt">注：参考图只能插入一张,且大小不能超出500kb</span>
         </div>
         <div v-if="buildingProduction.businessFacade.referenceMap" class="reference-map-container">
           <i
             class="el-icon-circle-close close"
-            @click="buildingProduction.businessFacade.referenceMap =''"
+            @click="buildingProduction.businessFacade.referenceMap ='';$refs.uploadBPBFMap.clearFiles()"
           ></i>
           <img
             class="reference-map"
@@ -375,7 +409,14 @@
         插入参考图
         <br />
         <div class="flex">
-          <el-upload :action="requestUrl + '/upload'" :on-success="uploadIPLRMap">
+          <el-upload
+            :action="requestUrl + '/upload'"
+            :limit="1"
+            accept=".png, .PNG, .jpg, .JPG, .jpeg, .JPEG"
+            :on-success="uploadIPLRMap"
+            :before-upload="beforeUpload"
+            ref="uploadIPLRMap"
+          >
             <el-button size="small" type="primary" plain>自行上传</el-button>
           </el-upload>
           <el-button
@@ -384,12 +425,12 @@
             plain
             @click="openGallery(2,landscapeProduction.landscapeRoad)"
           >图库选择</el-button>
-          <span class="prompt">注：参考图只能插入一张</span>
+          <span class="prompt">注：参考图只能插入一张,且大小不能超出500kb</span>
         </div>
         <div v-if="landscapeProduction.landscapeRoad.referenceMap" class="reference-map-container">
           <i
             class="el-icon-circle-close close"
-            @click="landscapeProduction.landscapeRoad.referenceMap =''"
+            @click="landscapeProduction.landscapeRoad.referenceMap ='';$refs.uploadIPLRMap.clearFiles()"
           ></i>
           <img
             class="reference-map"
@@ -435,7 +476,14 @@
         插入参考图
         <br />
         <div class="flex">
-          <el-upload :action="requestUrl + '/upload'" :on-success="uploadIPWPLMap">
+          <el-upload
+            :action="requestUrl + '/upload'"
+            :limit="1"
+            accept=".png, .PNG, .jpg, .JPG, .jpeg, .JPEG"
+            :on-success="uploadIPWPLMap"
+            :before-upload="beforeUpload"
+            ref="uploadIPWPLMap"
+          >
             <el-button size="small" type="primary" plain>自行上传</el-button>
           </el-upload>
           <el-button
@@ -444,7 +492,7 @@
             plain
             @click="openGallery(2,landscapeProduction.WaterPerformanceLight)"
           >图库选择</el-button>
-          <span class="prompt">注：参考图只能插入一张</span>
+          <span class="prompt">注：参考图只能插入一张,且大小不能超出500kb</span>
         </div>
         <div
           v-if="landscapeProduction.WaterPerformanceLight.referenceMap"
@@ -452,7 +500,7 @@
         >
           <i
             class="el-icon-circle-close close"
-            @click="landscapeProduction.WaterPerformanceLight.referenceMap =''"
+            @click="landscapeProduction.WaterPerformanceLight.referenceMap ='';$refs.uploadIPWPLMap.clearFiles()"
           ></i>
           <img
             class="reference-map"
@@ -497,7 +545,14 @@
         插入参考图
         <br />
         <div class="flex">
-          <el-upload :action="requestUrl + '/upload'" :on-success="uploadIPBBMap">
+          <el-upload
+            :action="requestUrl + '/upload'"
+            :limit="1"
+            accept=".png, .PNG, .jpg, .JPG, .jpeg, .JPEG"
+            :on-success="uploadIPBBMap"
+            :before-upload="beforeUpload"
+            ref="uploadIPBBMap"
+          >
             <el-button size="small" type="primary" plain>自行上传</el-button>
           </el-upload>
           <el-button
@@ -506,12 +561,12 @@
             plain
             @click="openGallery(2,landscapeProduction.buildingBlock)"
           >图库选择</el-button>
-          <span class="prompt">注：参考图只能插入一张</span>
+          <span class="prompt">注：参考图只能插入一张,且大小不能超出500kb</span>
         </div>
         <div v-if="landscapeProduction.buildingBlock.referenceMap" class="reference-map-container">
           <i
             class="el-icon-circle-close close"
-            @click="landscapeProduction.buildingBlock.referenceMap =''"
+            @click="landscapeProduction.buildingBlock.referenceMap ='';$refs.uploadIPBBMap.clearFiles()"
           ></i>
           <img
             class="reference-map"
@@ -800,6 +855,15 @@ export default {
           description: ""
         }
       };
+    },
+    beforeUpload(file) {
+      if (file.size / 1024 / 1024 > 0.5) {
+        this.$notify.error({
+          title: "错误",
+          message: "图片大小不能超出500kb"
+        });
+        return false;
+      }
     }
   },
   components: {

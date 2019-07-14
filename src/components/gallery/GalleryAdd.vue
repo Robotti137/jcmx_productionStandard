@@ -23,13 +23,16 @@
             :action="requestUrl + '/upload'"
             list-type="picture-card"
             :limit="1"
+            accept=".png, .PNG, .jpg, .JPG, .jpeg, .JPEG"
             :on-preview="handlePictureCardPreview"
             :on-remove="handleRemove"
             :on-success="handleSuccess"
+            :before-upload="beforeUpload"
             ref="imageUpload"
           >
             <i class="el-icon-plus"></i>
           </el-upload>
+          <span style="font-size:12px;color:#cccccc;">注：图片大小不能超出500kb</span>
         </el-form-item>
         <el-form-item label="备注" required prop="remark">
           <el-input type="textarea" v-model="imageData.remark" style="width:320px;"></el-input>
@@ -150,6 +153,15 @@ export default {
       imageForm.resetFields();
       this.imageData.imgPath = "";
       imageUpload.clearFiles();
+    },
+    beforeUpload(file) {
+      if (file.size / 1024 / 1024 > 0.5) {
+        this.$notify.error({
+          title: "错误",
+          message: "图片大小不能超出500kb"
+        });
+        return false;
+      }
     }
   }
 };

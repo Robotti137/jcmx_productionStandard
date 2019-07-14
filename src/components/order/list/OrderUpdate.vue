@@ -182,7 +182,14 @@
             插入参考图
             <br />
             <div class="flex">
-              <el-upload :action="requestUrl + '/upload'" :on-success="uploadMBMap">
+              <el-upload
+                :action="requestUrl + '/upload'"
+                :limit="1"
+                accept=".png, .PNG, .jpg, .JPG, .jpeg, .JPEG"
+                :on-success="uploadMBMap"
+                :before-upload="beforeUpload"
+                ref="uploadMBMap"
+              >
                 <el-button size="small" type="primary" plain>自行上传</el-button>
               </el-upload>
               <el-button
@@ -194,7 +201,10 @@
               <span class="prompt">注：参考图只能插入一张</span>
             </div>
             <div v-if="order.modelBase.referenceMap" class="reference-map-container">
-              <i class="el-icon-circle-close close" @click="order.modelBase.referenceMap =''"></i>
+              <i
+                class="el-icon-circle-close close"
+                @click="order.modelBase.referenceMap ='';$refs.uploadMBMap.clearFiles()"
+              ></i>
               <img
                 class="reference-map"
                 :src="requestUrl + '/upload/' + order.modelBase.referenceMap"
@@ -223,7 +233,14 @@
             插入参考图
             <br />
             <div class="flex">
-              <el-upload :action="requestUrl + '/upload'" :on-success="uploadBPFMap">
+              <el-upload
+                :action="requestUrl + '/upload'"
+                :limit="1"
+                accept=".png, .PNG, .jpg, .JPG, .jpeg, .JPEG"
+                :on-success="uploadBPFMap"
+                :before-upload="beforeUpload"
+                ref="uploadBPFMap"
+              >
                 <el-button size="small" type="primary" plain>自行上传</el-button>
               </el-upload>
               <el-button
@@ -240,7 +257,7 @@
             >
               <i
                 class="el-icon-circle-close close"
-                @click="order.buildingProduction.facade.referenceMap =''"
+                @click="order.buildingProduction.facade.referenceMap ='';$refs.uploadBPFMap.clearFiles()"
               ></i>
               <img
                 class="reference-map"
@@ -280,7 +297,14 @@
             插入参考图
             <br />
             <div class="flex">
-              <el-upload :action="requestUrl + '/upload'" :on-success="uploadBPIFMap">
+              <el-upload
+                :action="requestUrl + '/upload'"
+                :limit="1"
+                accept=".png, .PNG, .jpg, .JPG, .jpeg, .JPEG"
+                :on-success="uploadBPIFMap"
+                :before-upload="beforeUpload"
+                ref="uploadBPIFMap"
+              >
                 <el-button size="small" type="primary" plain>自行上传</el-button>
               </el-upload>
               <el-button
@@ -297,7 +321,7 @@
             >
               <i
                 class="el-icon-circle-close close"
-                @click="order.buildingProduction.innerFacade.referenceMap =''"
+                @click="order.buildingProduction.innerFacade.referenceMap ='';$refs.uploadBPIFMap.clearFiles()"
               ></i>
               <img
                 class="reference-map"
@@ -341,7 +365,14 @@
             插入参考图
             <br />
             <div class="flex">
-              <el-upload :action="requestUrl + '/upload'" :on-success="uploadBPBFMap">
+              <el-upload
+                :action="requestUrl + '/upload'"
+                :limit="1"
+                accept=".png, .PNG, .jpg, .JPG, .jpeg, .JPEG"
+                :on-success="uploadBPBFMap"
+                :before-upload="beforeUpload"
+                ref="uploadBPBFMap"
+              >
                 <el-button size="small" type="primary" plain>自行上传</el-button>
               </el-upload>
               <el-button
@@ -358,7 +389,7 @@
             >
               <i
                 class="el-icon-circle-close close"
-                @click="order.buildingProduction.businessFacade.referenceMap =''"
+                @click="order.buildingProduction.businessFacade.referenceMap ='';$refs.uploadBPBFMap.clearFiles()"
               ></i>
               <img
                 class="reference-map"
@@ -407,7 +438,14 @@
             插入参考图
             <br />
             <div class="flex">
-              <el-upload :action="requestUrl + '/upload'" :on-success="uploadIPLRMap">
+              <el-upload
+                :action="requestUrl + '/upload'"
+                :limit="1"
+                accept=".png, .PNG, .jpg, .JPG, .jpeg, .JPEG"
+                :on-success="uploadIPLRMap"
+                :before-upload="beforeUpload"
+                ref="uploadIPLRMap"
+              >
                 <el-button size="small" type="primary" plain>自行上传</el-button>
               </el-upload>
               <el-button
@@ -424,7 +462,7 @@
             >
               <i
                 class="el-icon-circle-close close"
-                @click="order.landscapeProduction.landscapeRoad.referenceMap =''"
+                @click="order.landscapeProduction.landscapeRoad.referenceMap ='';$refs.uploadIPLRMap.clearFiles()"
               ></i>
               <img
                 class="reference-map"
@@ -470,7 +508,14 @@
             插入参考图
             <br />
             <div class="flex">
-              <el-upload :action="requestUrl + '/upload'" :on-success="uploadIPWPLMap">
+              <el-upload
+                :action="requestUrl + '/upload'"
+                :limit="1"
+                accept=".png, .PNG, .jpg, .JPG, .jpeg, .JPEG"
+                :on-success="uploadIPWPLMap"
+                :before-upload="beforeUpload"
+                ref="uploadIPWPLMap"
+              >
                 <el-button size="small" type="primary" plain>自行上传</el-button>
               </el-upload>
               <el-button
@@ -487,7 +532,7 @@
             >
               <i
                 class="el-icon-circle-close close"
-                @click="order.landscapeProduction.WaterPerformanceLight.referenceMap =''"
+                @click="order.landscapeProduction.WaterPerformanceLight.referenceMap ='';$refs.uploadIPWPLMap.clearFiles()"
               ></i>
               <img
                 class="reference-map"
@@ -535,7 +580,14 @@
             插入参考图
             <br />
             <div class="flex">
-              <el-upload :action="requestUrl + '/upload'" :on-success="uploadIPBBMap">
+              <el-upload
+                :action="requestUrl + '/upload'"
+                :limit="1"
+                accept=".png, .PNG, .jpg, .JPG, .jpeg, .JPEG"
+                :on-success="uploadIPBBMap"
+                :before-upload="beforeUpload"
+                ref="uploadIPBBMap"
+              >
                 <el-button size="small" type="primary" plain>自行上传</el-button>
               </el-upload>
               <el-button
@@ -552,7 +604,7 @@
             >
               <i
                 class="el-icon-circle-close close"
-                @click="order.landscapeProduction.buildingBlock.referenceMap =''"
+                @click="order.landscapeProduction.buildingBlock.referenceMap ='';$refs.uploadIPBBMap.clearFiles()"
               ></i>
               <img
                 class="reference-map"
@@ -671,6 +723,15 @@ export default {
           type
         });
       });
+    },
+    beforeUpload(file) {
+      if (file.size / 1024 / 1024 > 0.5) {
+        this.$notify.error({
+          title: "错误",
+          message: "图片大小不能超出500kb"
+        });
+        return false;
+      }
     }
   },
   components: {

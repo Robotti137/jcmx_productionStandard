@@ -516,7 +516,7 @@
                 :before-upload="beforeUpload"
                 ref="uploadIPWPLMap"
               >
-                <el-button size="small" type="primary" plain>自行上传,且大小不能超出500kb</el-button>
+                <el-button size="small" type="primary" plain>自行上传</el-button>
               </el-upload>
               <el-button
                 size="small"
@@ -524,7 +524,7 @@
                 plain
                 @click="openGallery(2,order.landscapeProduction.WaterPerformanceLight)"
               >图库选择</el-button>
-              <span class="prompt">注：参考图只能插入一张</span>
+              <span class="prompt">注：参考图只能插入一张,且大小不能超出500kb</span>
             </div>
             <div
               v-if="order.landscapeProduction.WaterPerformanceLight.referenceMap"

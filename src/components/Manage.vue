@@ -39,7 +39,7 @@
             <el-breadcrumb-item :to="{path:value}" :key="value">{{name}}</el-breadcrumb-item>
           </template>
         </el-breadcrumb>
-        <p style="position:absolute;left:560px;font-size:18px;font-weight:bold;">精诚模型制作标准管理系统</p>
+        <p style="position:absolute;left:50%;font-size:18px;font-weight:bold;">精诚模型制作标准管理系统</p>
         <el-dropdown>
           <img src="../../static/img/default.jpg" class="avator el-dropdown-link" />
           <el-dropdown-menu slot="dropdown">

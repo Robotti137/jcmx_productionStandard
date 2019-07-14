@@ -600,8 +600,7 @@ export default {
       domtoimage
         .toBlob(document.getElementsByClassName("table-container")[0])
         .then(blob => {
-          console.log(blob)
-          // saveAs(blob, this.order.projectName);
+          saveAs(blob, this.order.projectName);
         });
     }
   }

@@ -533,7 +533,6 @@
 
 <script>
 import { requestUrl } from "@/default";
-import html2canvas from "html2canvas";
 export default {
   created() {
     this.order = JSON.parse(sessionStorage.getItem("order"));

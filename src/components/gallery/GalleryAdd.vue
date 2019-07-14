@@ -93,14 +93,14 @@ export default {
   methods: {
     ...mapActions(["getImageList"]),
     ...mapMutations(["setImageList", "setCurrentPage"]),
-    handleRemove(file, fileList) {
+    handleRemove() {
       this.imageData.imgPath = "";
     },
     handlePictureCardPreview(file) {
       this.bigImageUrl = file.url;
       this.bigImagedialogVisible = true;
     },
-    handleSuccess(response, file) {
+    handleSuccess(response) {
       this.imageData.imgPath = response.filename;
     },
     imgAdd() {

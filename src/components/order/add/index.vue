@@ -630,26 +630,26 @@ export default {
   },
   methods: {
     ...mapMutations(["setImgListdialogVisible", "setType", "setObj"]),
-    uploadMBMap(response, file) {
+    uploadMBMap(response) {
       this.modelBase.referenceMap = response.filename;
     },
-    uploadBPFMap(response, file) {
+    uploadBPFMap(response) {
       this.buildingProduction.facade.referenceMap = response.filename;
     },
-    uploadBPIFMap(response, file) {
+    uploadBPIFMap(response) {
       this.buildingProduction.innerFacade.referenceMap = response.filename;
     },
-    uploadBPBFMap(response, file) {
+    uploadBPBFMap(response) {
       this.buildingProduction.businessFacade.referenceMap = response.filename;
     },
-    uploadIPLRMap(response, file) {
+    uploadIPLRMap(response) {
       this.landscapeProduction.landscapeRoad.referenceMap = response.filename;
     },
-    uploadIPWPLMap(response, file) {
+    uploadIPWPLMap(response) {
       this.landscapeProduction.WaterPerformanceLight.referenceMap =
         response.filename;
     },
-    uploadIPBBMap(response, file) {
+    uploadIPBBMap(response) {
       this.landscapeProduction.buildingBlock.referenceMap = response.filename;
     },
     openGallery(type, obj) {

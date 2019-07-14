@@ -614,29 +614,29 @@ export default {
       "setOrderUpdateDialogVisible"
     ]),
     ...mapActions(["getOrderList"]),
-    uploadMBMap(response, file) {
+    uploadMBMap(response) {
       this.order.modelBase.referenceMap = response.filename;
     },
-    uploadBPFMap(response, file) {
+    uploadBPFMap(response) {
       this.order.buildingProduction.facade.referenceMap = response.filename;
     },
-    uploadBPIFMap(response, file) {
+    uploadBPIFMap(response) {
       this.order.buildingProduction.innerFacade.referenceMap =
         response.filename;
     },
-    uploadBPBFMap(response, file) {
+    uploadBPBFMap(response) {
       this.order.buildingProduction.businessFacade.referenceMap =
         response.filename;
     },
-    uploadIPLRMap(response, file) {
+    uploadIPLRMap(response) {
       this.order.landscapeProduction.landscapeRoad.referenceMap =
         response.filename;
     },
-    uploadIPWPLMap(response, file) {
+    uploadIPWPLMap(response) {
       this.order.landscapeProduction.WaterPerformanceLight.referenceMap =
         response.filename;
     },
-    uploadIPBBMap(response, file) {
+    uploadIPBBMap(response) {
       this.order.landscapeProduction.buildingBlock.referenceMap =
         response.filename;
     },

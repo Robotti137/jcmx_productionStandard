@@ -5,6 +5,7 @@ import user from './user'
 import gallery from './gallery'
 import order from './order'
 import houseOrder from './house_order'
+import locationOrder from './location_order'
 
 Vue.use(Vuex)
 
@@ -14,7 +15,8 @@ const store = new Vuex.Store({
         user,
         gallery,
         order,
-        houseOrder
+        houseOrder,
+        locationOrder
     }
 })
 

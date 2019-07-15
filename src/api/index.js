@@ -103,7 +103,27 @@ export const deleteHouseOrder = (id) => {
     return deletes(`${requestUrl}/houseOrder/${id}`);
 }
 
-//修改项目制作单
+//修改户型制作单
 export const putHouseOrder = (id, data) => {
     return put(`${requestUrl}/houseOrder/${id}`, data);
+}
+
+// 新增区位开工单
+export const postLocationOrder = (data) => {
+    return post(`${requestUrl}/locationOrder`, data);
+}
+
+// 获取区位开工单
+export const getLocationOrder = (data) => {
+    return get(`${requestUrl}/locationOrder`, data);
+}
+
+//删除区位开工单
+export const deleteLocationOrder = (id) => {
+    return deletes(`${requestUrl}/locationOrder/${id}`);
+}
+
+//修改区位制作单
+export const putLocationOrder = (id, data) => {
+    return put(`${requestUrl}/locationOrder/${id}`, data);
 }

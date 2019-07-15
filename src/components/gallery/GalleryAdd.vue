@@ -32,7 +32,7 @@
           >
             <i class="el-icon-plus"></i>
           </el-upload>
-          <span style="font-size:12px;color:#cccccc;">注：图片大小不能超出500kb</span>
+          <span style="font-size:12px;color:#cccccc;">注：图片大小不能超出2MB</span>
         </el-form-item>
         <el-form-item label="备注" required prop="remark">
           <el-input type="textarea" v-model="imageData.remark" style="width:320px;"></el-input>
@@ -155,10 +155,10 @@ export default {
       imageUpload.clearFiles();
     },
     beforeUpload(file) {
-      if (file.size / 1024 / 1024 > 0.5) {
+      if (file.size / 1024 / 1024 > 2) {
         this.$notify.error({
           title: "错误",
-          message: "图片大小不能超出500kb"
+          message: "图片大小不能超出2MB"
         });
         return false;
       }

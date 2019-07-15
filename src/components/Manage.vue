@@ -26,8 +26,9 @@
             <i class="el-icon-s-order"></i>
             <span>项目制作单</span>
           </template>
-          <el-menu-item index="/manage/order/add">添加项目制作单</el-menu-item>
-          <el-menu-item index="/manage/order/list">项目制作单列表</el-menu-item>
+          <el-menu-item index="/manage/order/project">项目开工单</el-menu-item>
+          <el-menu-item index="/manage/order/house">户型开工单</el-menu-item>
+          <el-menu-item index="/manage/order/location">区位开工单</el-menu-item>
         </el-submenu>
       </el-menu>
     </el-aside>

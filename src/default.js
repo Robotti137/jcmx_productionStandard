@@ -1,4 +1,4 @@
-let requestUrl = 'http://119.23.14.171:3000'
+let requestUrl = 'http://127.0.0.1:3000'
 export {
     requestUrl
 }

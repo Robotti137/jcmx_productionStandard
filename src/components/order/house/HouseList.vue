@@ -11,12 +11,12 @@
     <el-table-column prop="projectAddress" label="项目地址" align="center"></el-table-column>
     <el-table-column label="操作" fixed="right" width="210" align="center">
       <template slot-scope="scope">
-        <el-button type="primary" plain size="mini" @click="viewTable(scope.row)">查看</el-button>
+        <el-button type="primary" plain size="mini">查看</el-button>
         <el-button
           type="success"
           plain
           size="mini"
-          @click="setOrderUpdateDialogVisible(true);setOrder(scope.row)"
+          @click="setHouseData(scope.row);setHouseUpdateDialogVisible(true)"
         >修改</el-button>
         <el-button type="danger" plain size="mini" @click="deleteOrder(scope.row._id)">删除</el-button>
       </template>
@@ -26,8 +26,10 @@
 
 <script>
 import { createNamespacedHelpers } from "vuex";
-const { mapState, mapActions, mapMutations } = createNamespacedHelpers("order");
-import { deleteOrder } from "@/api";
+const { mapState, mapActions, mapMutations } = createNamespacedHelpers(
+  "houseOrder"
+);
+import { deleteHouseOrder } from "@/api";
 let loading = false;
 export default {
   created() {
@@ -37,21 +39,21 @@ export default {
     ...mapState(["orderList"])
   },
   methods: {
+    ...mapMutations(["setHouseData", "setHouseUpdateDialogVisible"]),
     ...mapActions(["getOrderList"]),
-    ...mapMutations(["setOrderUpdateDialogVisible", "setOrder"]),
     deleteOrder(id) {
       if (loading) {
         return;
       }
 
-      this.$confirm("此操作将删除此制作单,且后续不可恢复,是否继续?", "提示", {
+      this.$confirm("此操作将删除此开工单,且后续不可恢复,是否继续?", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning"
       })
         .then(() => {
           loading = true;
-          deleteOrder(id).then(data => {
+          deleteHouseOrder(id).then(data => {
             loading = false;
             let type;
             if (data.status === 1) {
@@ -69,10 +71,6 @@ export default {
         .catch(() => {
           return;
         });
-    },
-    viewTable(data) {
-      sessionStorage.setItem("order", JSON.stringify(data));
-      window.open("/template");
     }
   }
 };

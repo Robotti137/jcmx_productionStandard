@@ -7,9 +7,12 @@ const Manage = () => import('../components/Manage')
 const index = () => import('../components')
 const User = () => import('../components/user')
 const Gallery = () => import('../components/gallery')
-const Add = () => import('../components/order/add')
-const List = () => import('../components/order/list')
-const Template = () => import('../components/order/Template')
+
+//order
+const OrderProject = () => import('../components/order/project')
+const OrderHouse = () => import('../components/order/house')
+const OrderLocation = () => import('../components/order/location')
+const OrderProjectTemplate = () => import('../components/order/project/Template')
 
 Vue.use(VueRouter)
 
@@ -28,8 +31,8 @@ let router = new VueRouter({
             component: Register
         },
         {
-            path:'/template',
-            component: Template
+            path: '/order/project/template',
+            component: OrderProjectTemplate
         },
         {
             path: '/manage',
@@ -58,23 +61,32 @@ let router = new VueRouter({
                     }
                 },
                 {
-                    path: '/manage/order/add',
-                    component: Add,
+                    path: '/manage/order/project',
+                    component: OrderProject,
                     meta: {
                         '首页': '/manage/index',
                         '项目制作单': '',
-                        '添加项目制作单': '/manage/order'
+                        '项目开工单': '/manage/order/project'
                     }
                 },
                 {
-                    path: '/manage/order/list',
-                    component: List,
+                    path: '/manage/order/house',
+                    component: OrderHouse,
                     meta: {
                         '首页': '/manage/index',
                         '项目制作单': '',
-                        '项目制作单列表': '/manage/list'
+                        '户型开工单': '/manage/order/house'
                     }
-                }
+                },
+                {
+                    path: '/manage/order/location',
+                    component: OrderLocation,
+                    meta: {
+                        '首页': '/manage/index',
+                        '项目制作单': '',
+                        '区位开工单': '/manage/order/location'
+                    }
+                },
             ]
         }
     ]

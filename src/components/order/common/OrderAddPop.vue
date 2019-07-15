@@ -40,7 +40,15 @@ export default {
     ...mapMutations(["setImgListdialogVisible"]),
     returnImageName(name) {
       this.setImgListdialogVisible(false);
-      this.obj.referenceMap = name;
+      if (this.obj.referenceMap instanceof Array) {
+        if (this.obj.referenceMap.length === 3) {
+          return;
+        } else {
+          this.obj.referenceMap = [...this.obj.referenceMap, name];
+        }
+      } else {
+        this.obj.referenceMap = name;
+      }
     }
   },
   watch: {

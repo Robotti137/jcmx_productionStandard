@@ -87,3 +87,23 @@ export const deleteOrder = (id) => {
 export const putOrder = (id, data) => {
     return put(`${requestUrl}/order/${id}`, data);
 }
+
+// 新增户型开工单
+export const postHouseOrder = (data) => {
+    return post(`${requestUrl}/houseOrder`, data);
+}
+
+// 获取户型开工单
+export const getHouseOrder = (data) => {
+    return get(`${requestUrl}/houseOrder`, data);
+}
+
+//删除户型开工单
+export const deleteHouseOrder = (id) => {
+    return deletes(`${requestUrl}/houseOrder/${id}`);
+}
+
+//修改项目制作单
+export const putHouseOrder = (id, data) => {
+    return put(`${requestUrl}/houseOrder/${id}`, data);
+}

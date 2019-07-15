@@ -692,7 +692,7 @@
 
 <script>
 import { createNamespacedHelpers } from "vuex";
-const { mapMutations, mapActions } = createNamespacedHelpers("order");
+const { mapMutations } = createNamespacedHelpers("order");
 const locationMapState = createNamespacedHelpers("locationOrder").mapState;
 const locationMapActions = createNamespacedHelpers("locationOrder").mapActions;
 const locationMapMutations = createNamespacedHelpers("locationOrder")

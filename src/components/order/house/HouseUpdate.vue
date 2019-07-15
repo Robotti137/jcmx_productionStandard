@@ -389,7 +389,7 @@
 
 <script>
 import { createNamespacedHelpers } from "vuex";
-const { mapMutations, mapActions } = createNamespacedHelpers("order");
+const { mapMutations } = createNamespacedHelpers("order");
 const houseMapState = createNamespacedHelpers("houseOrder").mapState;
 const houseMapActions = createNamespacedHelpers("houseOrder").mapActions;
 const houseMapMutations = createNamespacedHelpers("houseOrder").mapMutations;

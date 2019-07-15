@@ -390,7 +390,7 @@
 
 <script>
 import { createNamespacedHelpers } from "vuex";
-const { mapMutations, mapActions } = createNamespacedHelpers("order");
+const { mapMutations } = createNamespacedHelpers("order");
 const houseMapActions = createNamespacedHelpers("houseOrder").mapActions;
 import { requestUrl } from "@/default";
 const OrderAddPop = () => import("../common/OrderAddPop");

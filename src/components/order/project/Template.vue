@@ -126,7 +126,7 @@
         <div class="center li-he border-b">
           <span :class="order.productionType === '玻璃罩' ? 'marqueed' : 'marquee'">玻璃罩</span>
           <span
-            :class="order.productionType === '厚度及高度：厚度 12mm,高度400mm' ? 'marqueed' : 'marquee'"
+            :class="order.productionType === '厚度及高度：厚度 12mm，高度400mm' ? 'marqueed' : 'marquee'"
           >厚度及高度：厚度 12mm,高度400mm</span>
           <span :class="order.productionType === '玻璃护栏' ? 'marqueed' : 'marquee'">玻璃护栏</span>
           <span
@@ -608,71 +608,5 @@ export default {
 </script>
 
 <style scoped>
-div {
-  box-sizing: border-box;
-}
-h3 {
-  margin: 0;
-  padding: 0;
-}
-.container {
-  border: 1px solid;
-}
-.table-container {
-  padding: 10px;
-  background-color: white;
-}
-.flex {
-  display: flex;
-}
-.center {
-  text-align: center;
-}
-.li-he {
-  line-height: 50px;
-}
-.height {
-  height: 50px;
-}
-.border-b {
-  border-bottom: 1px solid;
-}
-.border-r {
-  border-right: 1px solid;
-}
-.border-l {
-  border-left: 1px solid;
-}
-.i-b {
-  display: inline-block;
-  box-sizing: border-box;
-  text-align: left;
-  width: 100%;
-  padding: 0 5%;
-}
-.marquee {
-  margin: 10px;
-  vertical-align: middle;
-}
-.marqueed {
-  margin: 10px;
-  vertical-align: middle;
-}
-.marquee::before {
-  content: "";
-  display: inline-block;
-  margin-right: 5px;
-  width: 11px;
-  height: 11px;
-  border: 1px solid #cccccc;
-}
-.marqueed::before {
-  content: "";
-  display: inline-block;
-  margin-right: 5px;
-  width: 11px;
-  height: 11px;
-  border: 1px solid black;
-  background-color: black;
-}
+@import "../../../../static/css/template.css";
 </style>

@@ -11,7 +11,7 @@
     <el-table-column prop="projectAddress" label="项目地址" align="center"></el-table-column>
     <el-table-column label="操作" fixed="right" width="210" align="center">
       <template slot-scope="scope">
-        <el-button type="primary" plain size="mini">查看</el-button>
+        <el-button type="primary" plain size="mini" @click="viewTable(scope.row)">查看</el-button>
         <el-button
           type="success"
           plain
@@ -72,6 +72,10 @@ export default {
         .catch(() => {
           return;
         });
+    },
+    viewTable(data) {
+      sessionStorage.setItem("locationOrder", JSON.stringify(data));
+      window.open("/order/location/template");
     }
   }
 };

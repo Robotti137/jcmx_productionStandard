@@ -154,30 +154,28 @@
 
           <h3 style="text-align:center">模型底座要求</h3>
           <el-form-item label="户型沙盘：">
-            <el-radio-group v-model="houseData.modelBase.householdTandTable">
-              <el-radio label="石材"></el-radio>
-              <el-radio label="木质"></el-radio>
-              <el-radio label="皮革"></el-radio>
-              <el-radio label="玻璃"></el-radio>
-              <el-radio label="亚克力"></el-radio>
-              <el-radio label="石材"></el-radio>
-              <el-radio label="不锈钢"></el-radio>
-              <el-radio label="高度"></el-radio>
-              <el-radio label="其它"></el-radio>
-            </el-radio-group>
+            <el-checkbox-group v-model="houseData.modelBase.householdTandTable">
+              <el-checkbox label="石材"></el-checkbox>
+              <el-checkbox label="木质"></el-checkbox>
+              <el-checkbox label="皮革"></el-checkbox>
+              <el-checkbox label="玻璃"></el-checkbox>
+              <el-checkbox label="亚克力"></el-checkbox>
+              <el-checkbox label="不锈钢"></el-checkbox>
+              <el-checkbox label="高度"></el-checkbox>
+              <el-checkbox label="其它"></el-checkbox>
+            </el-checkbox-group>
           </el-form-item>
           <el-form-item label="户型模型：">
-            <el-radio-group v-model="houseData.modelBase.houseModel">
-              <el-radio label="石材"></el-radio>
-              <el-radio label="木质"></el-radio>
-              <el-radio label="皮革"></el-radio>
-              <el-radio label="玻璃"></el-radio>
-              <el-radio label="亚克力"></el-radio>
-              <el-radio label="石材"></el-radio>
-              <el-radio label="不锈钢"></el-radio>
-              <el-radio label="高度"></el-radio>
-              <el-radio label="其它"></el-radio>
-            </el-radio-group>
+            <el-checkbox-group v-model="houseData.modelBase.houseModel">
+              <el-checkbox label="石材"></el-checkbox>
+              <el-checkbox label="木质"></el-checkbox>
+              <el-checkbox label="皮革"></el-checkbox>
+              <el-checkbox label="玻璃"></el-checkbox>
+              <el-checkbox label="亚克力"></el-checkbox>
+              <el-checkbox label="不锈钢"></el-checkbox>
+              <el-checkbox label="高度"></el-checkbox>
+              <el-checkbox label="其它"></el-checkbox>
+            </el-checkbox-group>
           </el-form-item>
 
           <el-form-item label="底座参考图："></el-form-item>
@@ -220,38 +218,38 @@
 
           <h3 style="text-align:center">户型制作要求</h3>
           <el-form-item label="户型风格：">
-            <el-radio-group v-model="houseData.houseType.houseStyle">
-              <el-radio label="简欧"></el-radio>
-              <el-radio label="住宅现代"></el-radio>
-              <el-radio label="办公现代"></el-radio>
-              <el-radio label="欧式"></el-radio>
-              <el-radio label="中式"></el-radio>
-              <el-radio label="田园"></el-radio>
-              <el-radio label="新古典"></el-radio>
-              <el-radio label="现代简欧"></el-radio>
-              <el-radio label="东南亚"></el-radio>
-              <el-radio label="美式"></el-radio>
-              <el-radio label="地中海"></el-radio>
-              <el-radio label="藏式"></el-radio>
-              <el-radio label="其他(参照图片)"></el-radio>
-            </el-radio-group>
+            <el-checkbox-group v-model="houseData.houseType.houseStyle">
+              <el-checkbox label="简欧"></el-checkbox>
+              <el-checkbox label="住宅现代"></el-checkbox>
+              <el-checkbox label="办公现代"></el-checkbox>
+              <el-checkbox label="欧式"></el-checkbox>
+              <el-checkbox label="中式"></el-checkbox>
+              <el-checkbox label="田园"></el-checkbox>
+              <el-checkbox label="新古典"></el-checkbox>
+              <el-checkbox label="现代简欧"></el-checkbox>
+              <el-checkbox label="东南亚"></el-checkbox>
+              <el-checkbox label="美式"></el-checkbox>
+              <el-checkbox label="地中海"></el-checkbox>
+              <el-checkbox label="藏式"></el-checkbox>
+              <el-checkbox label="其它(参照图片)"></el-checkbox>
+            </el-checkbox-group>
           </el-form-item>
           <el-form-item label="办公及酒店风格：">
-            <el-radio-group v-model="houseData.houseType.officeHotelStyle">
-              <el-radio label="简欧"></el-radio>
-              <el-radio label="住宅现代"></el-radio>
-              <el-radio label="办公现代"></el-radio>
-              <el-radio label="欧式"></el-radio>
-              <el-radio label="中式"></el-radio>
-              <el-radio label="田园"></el-radio>
-              <el-radio label="新古典"></el-radio>
-              <el-radio label="现代简欧"></el-radio>
-              <el-radio label="东南亚"></el-radio>
-              <el-radio label="美式"></el-radio>
-              <el-radio label="地中海"></el-radio>
-              <el-radio label="藏式"></el-radio>
-              <el-radio label="其他(参照图片)"></el-radio>
-            </el-radio-group>
+            <el-checkbox-group v-model="houseData.houseType.officeHotelStyle">
+              <el-checkbox label="简欧"></el-checkbox>
+              <el-checkbox label="住宅现代"></el-checkbox>
+              <el-checkbox label="办公现代"></el-checkbox>
+              <el-checkbox label="欧式"></el-checkbox>
+              <el-checkbox label="中式"></el-checkbox>
+              <el-checkbox label="田园"></el-checkbox>
+              <el-checkbox label="新古典"></el-checkbox>
+              <el-checkbox label="现代简欧"></el-checkbox>
+              <el-checkbox label="东南亚"></el-checkbox>
+              <el-checkbox label="美式"></el-checkbox>
+              <el-checkbox label="地中海"></el-checkbox>
+              <el-checkbox label="藏式"></el-checkbox>
+              <el-checkbox label="其他(参照图片)"></el-checkbox>
+            </el-checkbox-group>
           </el-form-item>
           <el-form-item label="平层户型制作要求：">
             <el-checkbox-group v-model="houseData.houseType.flatFloorProduction">
@@ -438,14 +436,14 @@ export default {
         },
         productionType: "",
         modelBase: {
-          householdTandTable: "",
-          houseModel: "",
+          householdTandTable: [],
+          houseModel: [],
           referenceMap: "",
           description: ""
         },
         houseType: {
-          houseStyle: "",
-          officeHotelStyle: "",
+          houseStyle: [],
+          officeHotelStyle: [],
           flatFloorProduction: [],
           leapFloorProduction: [],
           houseLight: [],
@@ -569,14 +567,14 @@ export default {
         },
         productionType: "",
         modelBase: {
-          householdTandTable: "",
-          houseModel: "",
+          householdTandTable: [],
+          houseModel: [],
           referenceMap: "",
           description: ""
         },
         houseType: {
-          houseStyle: "",
-          officeHotelStyle: "",
+          houseStyle: [],
+          officeHotelStyle: [],
           flatFloorProduction: [],
           leapFloorProduction: [],
           houseLight: [],

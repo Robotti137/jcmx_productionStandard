@@ -312,7 +312,7 @@
               <el-checkbox label="地铁路线及高贴路线圈(七彩)"></el-checkbox>
               <el-checkbox label="地铁路线及高贴路线圈(单色)"></el-checkbox>
               <el-checkbox label="地铁路线及高贴路线圈(跑动)"></el-checkbox>
-              <el-checkbox label="其他"></el-checkbox>
+              <el-checkbox label="其它"></el-checkbox>
             </el-checkbox-group>
           </el-form-item>
           <el-form-item>
@@ -328,7 +328,7 @@
             <br />
             <el-input
               type="textarea"
-              v-model="locationData.locationModelProduction.locationLight.claimContentDescription"
+              v-model="locationData.locationModelProduction.claimContentDescription"
             ></el-input>
           </el-form-item>
 
@@ -395,7 +395,7 @@
               <el-checkbox label="地铁路线及高铁路线圈(单色)"></el-checkbox>
               <el-checkbox label="地铁路线及高铁路线圈(静态)"></el-checkbox>
               <el-checkbox label="地铁路线及高铁路线圈(跑动)"></el-checkbox>
-              <el-checkbox label="其他(参照图片)"></el-checkbox>
+              <el-checkbox label="其它(参照图片)"></el-checkbox>
             </el-checkbox-group>
           </el-form-item>
 
@@ -747,9 +747,9 @@ export default {
           locationLight: {
             type: [],
             referenceMap: "",
-            description: "",
-            claimContentDescription: ""
-          }
+            description: ""
+          },
+          claimContentDescription: ""
         },
         landscapeProduction: {
           landscapePerformance: "",
@@ -942,9 +942,9 @@ export default {
           locationLight: {
             type: [],
             referenceMap: "",
-            description: "",
-            claimContentDescription: ""
-          }
+            description: ""
+          },
+          claimContentDescription: ""
         },
         landscapeProduction: {
           landscapePerformance: "",

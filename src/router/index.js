@@ -13,6 +13,8 @@ const OrderProject = () => import('../components/order/project')
 const OrderHouse = () => import('../components/order/house')
 const OrderLocation = () => import('../components/order/location')
 const OrderProjectTemplate = () => import('../components/order/project/Template')
+const OrderHouseTemplate = () => import('../components/order/house/Template')
+const OrderLocationTemplate = () => import('../components/order/location/Template')
 
 Vue.use(VueRouter)
 
@@ -33,6 +35,14 @@ let router = new VueRouter({
         {
             path: '/order/project/template',
             component: OrderProjectTemplate
+        },
+        {
+            path: '/order/house/template',
+            component: OrderHouseTemplate
+        },
+        {
+            path: '/order/location/template',
+            component: OrderLocationTemplate
         },
         {
             path: '/manage',

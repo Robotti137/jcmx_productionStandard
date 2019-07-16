@@ -56,7 +56,7 @@
           <div style="flex:1;" class="height center li-he border-l">项目沙盘</div>
           <div style="width:19%;" class="height center li-he border-l">项目沙盘</div>
           <div style="width:19%;" class="height center li-he border-l">安装性质</div>
-          <div style="width:19%;" class="height center li-he border-l">其他</div>
+          <div style="width:19%;" class="height center li-he border-l">其它</div>
         </div>
         <div class="flex border-b">
           <div style="width:19%;" class="height center li-he">模型数量</div>
@@ -133,15 +133,15 @@
         </div>
 
         <div class="flex-j-i border-b" style="line-height:30px;">
-          <span :class="locationOrder.productionType === '玻璃罩' ? 'marqueed' : 'marquee'">玻璃罩</span>
-          <span :class="locationOrder.productionType === '自定义厚度及高度' ? 'marqueed' : 'marquee'">
+          <span :class="formatProductionType('玻璃罩')">玻璃罩</span>
+          <span :class="formatProductionType('自定义厚度及高度')">
             厚度及高度：
             <span
               style="text-decoration:underline;"
             >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
           </span>
-          <span :class="locationOrder.productionType === '玻璃护栏' ? 'marqueed' : 'marquee'">玻璃护栏</span>
-          <span :class="locationOrder.productionType === '其他特殊要求' ? 'marqueed' : 'marquee'">
+          <span :class="formatProductionType('玻璃护栏')">玻璃护栏</span>
+          <span :class="formatProductionType('其它特殊要求')">
             其它特殊要求：
             <span
               style="text-decoration:underline;"
@@ -187,7 +187,7 @@
 
         <div class="flex border-b">
           <div style="width:19%;" class="border-r center flex-j-i">
-            <span>其他特殊要求及具体制作内容说明</span>
+            <span>其它特殊要求及具体制作内容说明</span>
           </div>
           <div style="flex:1;" class="box-s">{{locationOrder.claimSpecificDescription}}</div>
         </div>
@@ -197,7 +197,7 @@
         <div class="flex li-he border-b center">
           <div style="width:19%;line-height:60px;" class="border-r">区位表现方式</div>
           <div style="flex:1;">
-            <div style="height:30px;" class="flex-j-i">
+            <div style="height:30px;line-height:30px;" class="center">
               <span :class="formatLocationPerformance('钢化玻璃丝印')">钢化玻璃丝印</span>
               <span
                 :class="formatLocationPerformance('亚克力+道路乳化玻璃(自定亚克力颜色)')"
@@ -209,7 +209,7 @@
               >不绣刚表现(颜色：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</span>
               <span :class="formatLocationPerformance('镜面钢化玻璃丝印')">镜面钢化玻璃丝印</span>
             </div>
-            <div style="height:30px;" class="flex-j-i">
+            <div style="height:30px;line-height:30px;" class="center">
               <span
                 :class="formatLocationPerformance('皮革+道路乳化玻璃(自定皮革材料编号)')"
               >皮革+道路乳化玻璃(皮革材料编号：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</span>
@@ -246,7 +246,7 @@
                 <span :class="formatLocationItselfPerformanceType('金色水晶')">金色水晶</span>
                 <span :class="formatLocationItselfPerformanceType('琥珀色水晶')">琥珀色水晶</span>
                 ）
-                <span :class="formatLocationItselfPerformanceType('其他')">其他</span>
+                <span :class="formatLocationItselfPerformanceType('其它')">其它</span>
               </p>
               <p>
                 其它要求说明：
@@ -266,13 +266,31 @@
             <div>区位灯光要求</div>
           </div>
           <div class="flex" style="flex:1;">
-            <div style="width:50%;max-width:50%;height:100%;font-size:0;" class="border-r">
-              <img
-                v-if="locationOrder.locationModelProduction.locationLight.referenceMap"
-                style="max-width:100%;"
-                :src="requestUrl + '/upload/' 
-                + locationOrder.locationModelProduction.locationLight.referenceMap"
-              />
+            <div style="width:50%;height:100%;font-size:0;" class="flex border-r">
+              <div style="width:33.33%;height:100%;font-size:0;" class="border-r">
+                <img
+                  v-if="locationOrder.locationModelProduction.locationLight.referenceMap[0]"
+                  style="max-width:100%;"
+                  :src="requestUrl + '/upload/' 
+                + locationOrder.locationModelProduction.locationLight.referenceMap[0]"
+                />
+              </div>
+              <div style="width:33.33%;height:100%;font-size:0;" class="border-r">
+                <img
+                  v-if="locationOrder.locationModelProduction.locationLight.referenceMap[1]"
+                  style="max-width:100%;"
+                  :src="requestUrl + '/upload/' 
+                + locationOrder.locationModelProduction.locationLight.referenceMap[1]"
+                />
+              </div>
+              <div style="width:33.33%;height:100%;font-size:0;" class="border-r">
+                <img
+                  v-if="locationOrder.locationModelProduction.locationLight.referenceMap[2]"
+                  style="max-width:100%;"
+                  :src="requestUrl + '/upload/' 
+                + locationOrder.locationModelProduction.locationLight.referenceMap[2]"
+                />
+              </div>
             </div>
             <div style="width:50%;max-width:50%;height:100%;" class="box-s">
               <p style="margin-bottom:10px;">
@@ -294,7 +312,7 @@
                 <span :class="formatLocationLightType('地铁路线及高贴路线圈(七彩)')">七彩</span>
                 <span :class="formatLocationLightType('地铁路线及高贴路线圈(单色)')">单色</span>
                 <span :class="formatLocationLightType('地铁路线及高贴路线圈(跑动)')">跑动</span>）
-                <span :class="formatLocationLightType('其他')">其它</span>
+                <span :class="formatLocationLightType('其它')">其它</span>
               </p>
               <p>
                 其它要求说明：
@@ -308,7 +326,7 @@
 
         <div class="flex border-b">
           <div style="width:19%;" class="border-r center flex-j-i">
-            <span>其他特殊要求及具体制作内容说明</span>
+            <span>其它特殊要求及具体制作内容说明</span>
           </div>
           <div
             style="flex:1;"
@@ -389,7 +407,7 @@
         <div class="flex li-he border-b center">
           <div style="width:19%;line-height:90px;" class="border-r">景观灯光</div>
           <div style="flex:1;">
-            <div style="height:30px;" class="flex-j-i">
+            <div style="height:30px;line-height:30px;">
               <span :class="formatLandscapeLight('地灯')">地灯</span>
               <span :class="formatLandscapeLight('路灯')">路灯</span>
               <span :class="formatLandscapeLight('庭院灯')">庭院灯</span>
@@ -400,7 +418,7 @@
               <span :class="formatLandscapeLight('重要道路线灯光(静态)')">静态</span>
               <span :class="formatLandscapeLight('重要道路线灯光(动态)')">动态</span>）
             </div>
-            <div style="height:30px;" class="flex-j-i">
+            <div style="height:30px;line-height:30px;">
               <span :class="formatLandscapeLight('重要地区轮廊灯光')">重要地区轮廊灯光</span>（
               <span :class="formatLandscapeLight('重要地区轮廊灯光(单色)')">单色</span>
               <span :class="formatLandscapeLight('重要地区轮廊灯光(七彩)')">七彩</span>
@@ -409,7 +427,7 @@
               <span :class="formatLandscapeLight('商业街程序灯光(预埋)')">商业街程序灯光(预埋)</span>
               <span :class="formatLandscapeLight('节点灯光')">节点灯光</span>
             </div>
-            <div style="height:30px;" class="flex-j-i">
+            <div style="height:30px;line-height:30px;">
               <span :class="formatLandscapeLight('地铁路线及高铁路线圈')">地铁路线及高铁路线圈</span>（
               <span :class="formatLandscapeLight('地铁路线及高铁路线圈(七彩)')">七彩</span>
               <span :class="formatLandscapeLight('地铁路线及高铁路线圈(单色)')">单色</span>
@@ -545,7 +563,7 @@
 
         <div class="flex border-b">
           <div style="width:19%;" class="border-r center flex-j-i">
-            <span>其他特殊要求及建筑制作内容说明</span>
+            <span>其它特殊要求及建筑制作内容说明</span>
           </div>
           <div
             style="flex:1;"
@@ -558,7 +576,7 @@
         <div class="flex li-he border-b center">
           <div style="width:19%;line-height:60px;" class="border-r">建筑立面</div>
           <div style="flex:1;">
-            <div style="height:30px;" class="flex-j-i">
+            <div style="height:30px;line-height:30px;">
               <span :class="formatBuildingFacade('外墙写真表现')">外墙写真表现</span>
               <span :class="formatBuildingFacade('外墙贴钻表现')">外墙贴钻表现</span>
               <span :class="formatBuildingFacade('外墙亚克力表现')">外墙亚克力表现</span>
@@ -566,7 +584,7 @@
               <span :class="formatBuildingFacade('外墙概念表现')">外墙概念表现</span>
               <span :class="formatBuildingFacade('其它')">其它</span>
             </div>
-            <div style="height:30px;" class="flex-j-i">
+            <div style="height:30px;line-height:30px;">
               <span :class="formatBuildingFacade('公建现场取景写实制作')">公建现场取景写实制作</span>
               <span :class="formatBuildingFacade('幕墙贴膜表现(颜色客户选择)')">幕墙贴膜表现(颜色客户选择)</span>
               <span :class="formatBuildingFacade('幕墙镜面表现')">幕墙镜面表现</span>
@@ -578,7 +596,7 @@
         <div class="flex li-he border-b center">
           <div style="width:19%;height:90px;line-height:90px;" class="border-r">建筑内部及外立面灯光</div>
           <div style="flex:1;">
-            <div style="height:30px;" class="flex-j-i border-b">
+            <div style="height:30px;line-height:30px;" class="border-b center">
               <span :class="formatBuildingInteriorFacadeLight('住宅常规万家灯光')">住宅常规万家灯光</span>（
               <span :class="formatBuildingInteriorFacadeLight('住宅常规万家灯光(整体透光)')">整体透光</span>
               <span :class="formatBuildingInteriorFacadeLight('住宅常规万家灯光(分组亮灯)')">分组亮灯</span>）
@@ -587,12 +605,12 @@
               <span :class="formatBuildingInteriorFacadeLight('写字楼')">写字楼</span>
               <span :class="formatBuildingInteriorFacadeLight('外立面LED轮廊灯光(外贴)')">外立面LED轮廊灯光(外贴)</span>
             </div>
-            <div style="height:30px;" class="flex-j-i border-b">
+            <div style="height:30px;line-height:30px;" class="border-b center">
               <span :class="formatBuildingInteriorFacadeLight('外立面竖向LED灯光(外贴)')">外立面竖向LED灯光(外贴)</span>
               <span :class="formatBuildingInteriorFacadeLight('外立面节点(外贴)')">外立面节点(外贴)</span>
               <span :class="formatBuildingInteriorFacadeLight('公建灯光(写实参照)')">公建灯光(写实参照)</span>
             </div>
-            <div style="height:30px;" class="flex-j-i">
+            <div style="height:30px;line-height:30px;" class="center">
               <span :class="formatBuildingInteriorFacadeLight('内部楼板横向LED轮廊灯光')">内部楼板横向LED轮廊灯光</span>（
               <span :class="formatBuildingInteriorFacadeLight('内部楼板横向LED轮廊灯光(单色)')">单色</span>
               <span :class="formatBuildingInteriorFacadeLight('内部楼板横向LED轮廊灯光(七彩)')">七彩</span>）
@@ -851,6 +869,20 @@ export default {
           }
         }
       );
+      if (className) {
+        return className;
+      } else {
+        return "marquee";
+      }
+    },
+    formatProductionType(str) {
+      const { locationOrder } = this;
+      let className;
+      locationOrder.productionType.forEach(item => {
+        if (item === str) {
+          className = "marqueed";
+        }
+      });
       if (className) {
         return className;
       } else {

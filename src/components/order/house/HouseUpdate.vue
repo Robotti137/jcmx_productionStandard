@@ -2,15 +2,14 @@
   <div>
     <el-dialog title="新增户型开工单" :visible.sync="houseUpdateDialogVisible" width="70%" append-to-body>
       <div class="container">
-        <el-form :model="houseData" label-width="155px" ref="houseForm">
-          <el-form-item label="文档编号">
+        <el-form :model="houseData" label-width="240px" ref="houseForm">
+          <el-form-item label="文档编号：">
             <el-input type="text" size="small" v-model="houseData.documentNumber"></el-input>
           </el-form-item>
-          <el-form-item label="项目名称">
+          <el-form-item label="项目名称：">
             <el-input type="text" size="small" v-model="houseData.projectName"></el-input>
           </el-form-item>
-
-          <el-form-item label="下单日期">
+          <el-form-item label="下单日期：">
             <el-date-picker
               type="date"
               placeholder="选择日期"
@@ -19,7 +18,7 @@
               v-model="houseData.orderDate"
             ></el-date-picker>
           </el-form-item>
-          <el-form-item label="完成日期">
+          <el-form-item label="完成日期：">
             <el-date-picker
               type="date"
               placeholder="选择日期"
@@ -28,20 +27,19 @@
               v-model="houseData.completeDate"
             ></el-date-picker>
           </el-form-item>
-          <el-form-item label="项目节点总负责人">
+          <el-form-item label="项目节点总负责人：">
             <el-input type="text" size="small" v-model="houseData.projectPrincipal"></el-input>
           </el-form-item>
-          <el-form-item label="项目策划人">
+          <el-form-item label="项目策划人：">
             <el-input type="text" size="small" v-model="houseData.projectPlanner"></el-input>
           </el-form-item>
-          <el-form-item label="业务员">
+          <el-form-item label="业务员：">
             <el-input type="text" size="small" v-model="houseData.salesman"></el-input>
           </el-form-item>
-          <el-form-item label="项目地址" style="color:red">
+          <el-form-item label="项目地址：" style="color:red">
             <el-input type="text" size="small" v-model="houseData.projectAddress"></el-input>
           </el-form-item>
           <h3 style="text-align:center">模型制作内容（模型范围示意图）</h3>
-
           <el-form-item label="项目沙盘："></el-form-item>
           <el-form-item>
             模型数量
@@ -84,7 +82,6 @@
               v-model="houseData.projectSandTable.innerDimension"
             ></el-input>
           </el-form-item>
-
           <el-form-item label="升降设备："></el-form-item>
           <el-form-item>
             模型数量
@@ -98,8 +95,7 @@
               <el-radio label="层数">层数</el-radio>
             </el-radio-group>
           </el-form-item>
-
-          <el-form-item label="其他："></el-form-item>
+          <el-form-item label="其它："></el-form-item>
           <el-form-item>
             模型数量
             <br />
@@ -141,16 +137,14 @@
               v-model="houseData.other.innerDimension"
             ></el-input>
           </el-form-item>
-
           <el-form-item label-width="0">
-            <el-radio-group v-model="houseData.productionType">
-              <el-radio label="玻璃罩"></el-radio>
-              <el-radio label="玻璃护栏"></el-radio>
-              <el-radio label="自定义厚度及高度"></el-radio>
-              <el-radio label="其他特殊要求"></el-radio>
-            </el-radio-group>
+            <el-checkbox-group v-model="houseData.productionType">
+              <el-checkbox label="玻璃罩"></el-checkbox>
+              <el-checkbox label="玻璃护栏"></el-checkbox>
+              <el-checkbox label="自定义厚度及高度"></el-checkbox>
+              <el-checkbox label="其它特殊要求"></el-checkbox>
+            </el-checkbox-group>
           </el-form-item>
-
           <h3 style="text-align:center">模型底座要求</h3>
           <el-form-item label="户型沙盘：">
             <el-checkbox-group v-model="houseData.modelBase.householdTandTable">
@@ -176,7 +170,6 @@
               <el-checkbox label="其它"></el-checkbox>
             </el-checkbox-group>
           </el-form-item>
-
           <el-form-item label="底座参考图："></el-form-item>
           <el-form-item>
             插入参考图
@@ -211,10 +204,9 @@
               />
             </div>
           </el-form-item>
-          <el-form-item label="其他要求说明：">
+          <el-form-item label="其它要求说明：">
             <el-input type="textarea" v-model="houseData.modelBase.description"></el-input>
           </el-form-item>
-
           <h3 style="text-align:center">户型制作要求</h3>
           <el-form-item label="户型风格：">
             <el-checkbox-group v-model="houseData.houseType.houseStyle">
@@ -230,7 +222,7 @@
               <el-checkbox label="美式"></el-checkbox>
               <el-checkbox label="地中海"></el-checkbox>
               <el-checkbox label="藏式"></el-checkbox>
-              <el-checkbox label="其他(参照图片)"></el-checkbox>
+              <el-checkbox label="其它(参照图片)"></el-checkbox>
             </el-checkbox-group>
           </el-form-item>
           <el-form-item label="办公及酒店风格：">
@@ -247,7 +239,7 @@
               <el-checkbox label="美式"></el-checkbox>
               <el-checkbox label="地中海"></el-checkbox>
               <el-checkbox label="藏式"></el-checkbox>
-              <el-checkbox label="其他(参照图片)"></el-checkbox>
+              <el-checkbox label="其它(参照图片)"></el-checkbox>
             </el-checkbox-group>
           </el-form-item>
           <el-form-item label="平层户型制作要求：">
@@ -315,7 +307,7 @@
               <el-radio label="精品精装"></el-radio>
             </el-radio-group>
           </el-form-item>
-          <el-form-item label="其他特殊要求及具体制作内容说明：">
+          <el-form-item label="其它特殊要求及具体制作内容说明：">
             <el-input type="textarea" v-model="houseData.houseType.claimSpecificDescription"></el-input>
           </el-form-item>
           <el-form-item>
@@ -373,10 +365,9 @@
               </div>
             </div>
           </el-form-item>
-          <el-form-item label="其他特殊要求及建筑制作内容说明：">
+          <el-form-item label="其它特殊要求及建筑制作内容说明：">
             <el-input type="textarea" v-model="houseData.houseType.claimBuildDescription"></el-input>
           </el-form-item>
-
           <el-form-item>
             <el-button type="primary" @click="updateOrder">保 存</el-button>
           </el-form-item>
@@ -502,44 +493,5 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  margin: 30px auto;
-  width: 48%;
-}
-.reference-map {
-  margin-top: 10px;
-  width: 148px;
-  height: 148px;
-}
-.el-radio {
-  margin: 10px 5px;
-}
-.flex {
-  display: flex;
-  line-height: 20px;
-}
-.flex > button {
-  margin-left: 10px;
-  height: 32px;
-}
-.reference-map-container {
-  position: relative;
-  margin-right: 7px;
-  width: 148px;
-  height: 148px;
-}
-.close {
-  position: absolute;
-  font-size: 20px;
-  color: #cccccc;
-  right: 0;
-  top: 10px;
-  cursor: pointer;
-}
-.prompt {
-  margin-left: 15px;
-  font-size: 12px;
-  color: #cccccc;
-  line-height: 30px;
-}
+@import "../../../../static/css/order_common.css";
 </style>

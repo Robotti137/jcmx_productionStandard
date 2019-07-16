@@ -2,16 +2,14 @@
   <div>
     <el-dialog title="修改项目开工单" :visible.sync="orderUpdateDialogVisible" width="70%" append-to-body>
       <div class="container">
-        <el-form label-width="155px" ref="orderForm" :model="order">
-          <el-form-item label="文档编号">
+        <el-form label-width="210px" ref="orderForm" :model="order">
+          <el-form-item label="文档编号：">
             <el-input type="text" size="small" v-model="order.documentNumber"></el-input>
           </el-form-item>
-
-          <el-form-item label="项目名称">
+          <el-form-item label="项目名称：">
             <el-input type="text" size="small" v-model="order.projectName"></el-input>
           </el-form-item>
-
-          <el-form-item label="下单日期">
+          <el-form-item label="下单日期：">
             <el-date-picker
               type="date"
               placeholder="选择日期"
@@ -20,8 +18,7 @@
               v-model="order.orderDate"
             ></el-date-picker>
           </el-form-item>
-
-          <el-form-item label="完成日期">
+          <el-form-item label="完成日期：">
             <el-date-picker
               type="date"
               placeholder="选择日期"
@@ -30,32 +27,25 @@
               v-model="order.completeDate"
             ></el-date-picker>
           </el-form-item>
-
-          <el-form-item label="项目节点总负责人">
+          <el-form-item label="项目节点总负责人：">
             <el-input type="text" size="small" v-model="order.projectPrincipal"></el-input>
           </el-form-item>
-
-          <el-form-item label="项目策划人">
+          <el-form-item label="项目策划人：">
             <el-input type="text" size="small" v-model="order.projectPlanner"></el-input>
           </el-form-item>
-
-          <el-form-item label="业务员">
+          <el-form-item label="业务员：">
             <el-input type="text" size="small" v-model="order.salesman"></el-input>
           </el-form-item>
-
-          <el-form-item label="项目地址" style="color:red">
+          <el-form-item label="项目地址：" style="color:red">
             <el-input type="text" size="small" v-model="order.projectAddress"></el-input>
           </el-form-item>
-
           <h3 style="text-align:center">模型制作内容（模型范围示意图）</h3>
-
           <el-form-item label="项目沙盘："></el-form-item>
           <el-form-item>
             模型数量
             <br />
             <el-input-number v-model="order.projectSandTable.number" :min="0" size="small"></el-input-number>
           </el-form-item>
-
           <el-form-item>
             模型比例
             <br />
@@ -74,7 +64,6 @@
               v-model="order.projectSandTable.building"
             ></el-input>
           </el-form-item>
-
           <el-form-item>
             地盘规格
             <br />
@@ -93,7 +82,6 @@
               v-model="order.projectSandTable.innerDimension"
             ></el-input>
           </el-form-item>
-
           <el-form-item label="升降设备："></el-form-item>
           <el-form-item>
             模型数量
@@ -107,8 +95,7 @@
               <el-radio label="层数">层数</el-radio>
             </el-radio-group>
           </el-form-item>
-
-          <el-form-item label="其他："></el-form-item>
+          <el-form-item label="其它："></el-form-item>
           <el-form-item>
             模型数量
             <br />
@@ -150,18 +137,14 @@
               v-model="order.other.innerDimension"
             ></el-input>
           </el-form-item>
-
           <el-form-item label-width="0">
-            <el-radio-group v-model="order.productionType">
-              <el-radio label="厚度高度：根据地形高度制作300mm高，12mm厚"></el-radio>
-              <el-radio label="厚度及高度：厚度 12mm，高度400mm"></el-radio>
-              <el-radio label="特殊要求：根据地形做护栏"></el-radio>
-              <el-radio label="玻璃护栏"></el-radio>
-              <el-radio label="玻璃罩"></el-radio>
-              <el-radio label="其它"></el-radio>
-            </el-radio-group>
+            <el-checkbox-group v-model="order.productionType">
+              <el-checkbox label="玻璃罩"></el-checkbox>
+              <el-checkbox label="玻璃护栏"></el-checkbox>
+              <el-checkbox label="自定义厚度及高度"></el-checkbox>
+              <el-checkbox label="其它特殊要求"></el-checkbox>
+            </el-checkbox-group>
           </el-form-item>
-
           <h3 style="text-align:center">模型底座要求</h3>
           <el-form-item label="项目沙盘：">
             <el-checkbox-group v-model="order.modelBase.projectSandTableType">
@@ -176,7 +159,6 @@
               <el-checkbox label="黑色镜面玻璃"></el-checkbox>
             </el-checkbox-group>
           </el-form-item>
-
           <el-form-item label="底座说明："></el-form-item>
           <el-form-item>
             插入参考图
@@ -226,7 +208,6 @@
             <br />
             <el-input type="textarea" v-model="order.modelBase.description"></el-input>
           </el-form-item>
-
           <h3 style="text-align:center">建筑制作要求</h3>
           <el-form-item label="住宅建筑外立面："></el-form-item>
           <el-form-item>
@@ -266,21 +247,20 @@
             </div>
           </el-form-item>
           <el-form-item>
-            <el-radio-group v-model="order.buildingProduction.facade.type">
-              <el-radio label="外墙写实表现"></el-radio>
-              <el-radio label="镜面"></el-radio>
-              <el-radio label="幕墙玻璃"></el-radio>
-              <el-radio label="木质"></el-radio>
-              <el-radio label="水钻"></el-radio>
-              <el-radio label="外墙磨砂"></el-radio>
-            </el-radio-group>
+            <el-checkbox-group v-model="order.buildingProduction.facade.type">
+              <el-checkbox label="外墙写实表现"></el-checkbox>
+              <el-checkbox label="镜面"></el-checkbox>
+              <el-checkbox label="幕墙玻璃"></el-checkbox>
+              <el-checkbox label="木质"></el-checkbox>
+              <el-checkbox label="水钻"></el-checkbox>
+              <el-checkbox label="外墙磨砂"></el-checkbox>
+            </el-checkbox-group>
           </el-form-item>
           <el-form-item>
             其它要求说明
             <br />
             <el-input type="textarea" v-model="order.buildingProduction.facade.description"></el-input>
           </el-form-item>
-
           <el-form-item label="建筑ABS厚度：">
             <el-radio-group v-model="order.buildingProduction.abs">
               <el-radio label="ABS1.0"></el-radio>
@@ -291,7 +271,6 @@
               <el-radio label="ABS4.0拼角"></el-radio>
             </el-radio-group>
           </el-form-item>
-
           <el-form-item label="住宅内部及立面灯光："></el-form-item>
           <el-form-item>
             插入参考图
@@ -330,11 +309,11 @@
             </div>
           </el-form-item>
           <el-form-item>
-            <el-radio-group v-model="order.buildingProduction.innerFacade.type">
-              <el-radio label="万家灯动态控制"></el-radio>
-              <el-radio label="透明玻璃灯板"></el-radio>
-              <el-radio label="整体透暖色天花灯"></el-radio>
-            </el-radio-group>
+            <el-checkbox-group v-model="order.buildingProduction.innerFacade.type">
+              <el-checkbox label="万家灯动态控制"></el-checkbox>
+              <el-checkbox label="透明玻璃灯板"></el-checkbox>
+              <el-checkbox label="整体透暖色天花灯"></el-checkbox>
+            </el-checkbox-group>
           </el-form-item>
           <el-form-item>
             建筑内部灯光
@@ -359,7 +338,6 @@
             <br />
             <el-input type="textarea" v-model="order.buildingProduction.innerFacade.description"></el-input>
           </el-form-item>
-
           <el-form-item label="商业建筑外立面："></el-form-item>
           <el-form-item>
             插入参考图
@@ -398,24 +376,23 @@
             </div>
           </el-form-item>
           <el-form-item>
-            <el-radio-group v-model="order.buildingProduction.businessFacade.type">
-              <el-radio label="商业写实制作，内部按甲方平面要求布局"></el-radio>
-              <el-radio label="外墙写实表现"></el-radio>
-              <el-radio label="商业支撑剖开制作"></el-radio>
-              <el-radio label="镜面"></el-radio>
-              <el-radio label="幕墙玻璃"></el-radio>
-              <el-radio label="木质"></el-radio>
-              <el-radio label="水钻"></el-radio>
-              <el-radio label="外墙磨砂"></el-radio>
-              <el-radio label="商业镜面勾线，屋面屋顶花园"></el-radio>
-            </el-radio-group>
+            <el-checkbox-group v-model="order.buildingProduction.businessFacade.type">
+              <el-checkbox label="商业写实制作，内部按甲方平面要求布局"></el-checkbox>
+              <el-checkbox label="外墙写实表现"></el-checkbox>
+              <el-checkbox label="商业支撑剖开制作"></el-checkbox>
+              <el-checkbox label="镜面"></el-checkbox>
+              <el-checkbox label="幕墙玻璃"></el-checkbox>
+              <el-checkbox label="木质"></el-checkbox>
+              <el-checkbox label="水钻"></el-checkbox>
+              <el-checkbox label="外墙磨砂"></el-checkbox>
+              <el-checkbox label="商业镜面勾线，屋面屋顶花园"></el-checkbox>
+            </el-checkbox-group>
           </el-form-item>
           <el-form-item>
             其它要求说明
             <br />
             <el-input type="textarea" v-model="order.buildingProduction.businessFacade.description"></el-input>
           </el-form-item>
-
           <h3 style="text-align:center">景观制作要求</h3>
           <el-form-item label="景观表现：">
             <el-radio-group v-model="order.landscapeProduction.landscapePerformance">
@@ -424,15 +401,13 @@
               <el-radio label="有地形"></el-radio>
             </el-radio-group>
           </el-form-item>
-
           <el-form-item label="园林风光：">
-            <el-radio-group v-model="order.landscapeProduction.gardenScenery">
-              <el-radio label="8mm高仿真草坪"></el-radio>
-              <el-radio label="建筑屋顶绿化"></el-radio>
-              <el-radio label="其它（铺砖、种植按照甲方提供景观图纸制作（提供资料））"></el-radio>
-            </el-radio-group>
+            <el-checkbox-group v-model="order.landscapeProduction.gardenScenery">
+              <el-checkbox label="8mm高仿真草坪"></el-checkbox>
+              <el-checkbox label="建筑屋顶绿化"></el-checkbox>
+              <el-checkbox label="其它（铺砖、种植按照甲方提供景观图纸制作（提供资料））"></el-checkbox>
+            </el-checkbox-group>
           </el-form-item>
-
           <el-form-item label="景观道路："></el-form-item>
           <el-form-item>
             插入参考图
@@ -473,11 +448,11 @@
           <el-form-item>
             景观道路
             <br />
-            <el-radio-group v-model="order.landscapeProduction.landscapeRoad.type">
-              <el-radio label="亚克力道路（汽车打灯）"></el-radio>
-              <el-radio label="边预埋蓝色灯带"></el-radio>
-              <el-radio label="边预埋其他颜色灯带"></el-radio>
-            </el-radio-group>
+            <el-checkbox-group v-model="order.landscapeProduction.landscapeRoad.type">
+              <el-checkbox label="亚克力道路（汽车打灯）"></el-checkbox>
+              <el-checkbox label="边预埋蓝色灯带"></el-checkbox>
+              <el-checkbox label="边预埋其它颜色灯带"></el-checkbox>
+            </el-checkbox-group>
           </el-form-item>
           <el-form-item>
             其它要求说明
@@ -486,13 +461,12 @@
           </el-form-item>
 
           <el-form-item label="地形表现：">
-            <el-radio-group v-model="order.landscapeProduction.terrainPerformance">
-              <el-radio label="常规表现"></el-radio>
-              <el-radio label="等高线表现"></el-radio>
-              <el-radio label="其它（参考照片）"></el-radio>
-            </el-radio-group>
+            <el-checkbox-group v-model="order.landscapeProduction.terrainPerformance">
+              <el-checkbox label="常规表现"></el-checkbox>
+              <el-checkbox label="等高线表现"></el-checkbox>
+              <el-checkbox label="其它（参考照片）"></el-checkbox>
+            </el-checkbox-group>
           </el-form-item>
-
           <el-form-item label="景观灯光：">
             <el-checkbox-group v-model="order.landscapeProduction.landscapeLight">
               <el-checkbox label="地灯"></el-checkbox>
@@ -502,7 +476,6 @@
               <el-checkbox label="节点灯光"></el-checkbox>
             </el-checkbox-group>
           </el-form-item>
-
           <el-form-item label="水景表现及灯光："></el-form-item>
           <el-form-item>
             插入参考图
@@ -555,8 +528,7 @@
               v-model="order.landscapeProduction.WaterPerformanceLight.description"
             ></el-input>
           </el-form-item>
-
-          <el-form-item label="水晶及其他表现方式灯光方式：">
+          <el-form-item label="水晶及其它表现方式灯光方式：">
             <el-checkbox-group v-model="order.landscapeProduction.crystalPerformanceLight">
               <el-checkbox label="透明水晶"></el-checkbox>
               <el-checkbox label="底板金色材质板"></el-checkbox>
@@ -574,7 +546,6 @@
               <el-checkbox label="商业勾线镜面体块"></el-checkbox>
             </el-checkbox-group>
           </el-form-item>
-
           <el-form-item label="建筑体块："></el-form-item>
           <el-form-item>
             插入参考图
@@ -617,7 +588,6 @@
             <br />
             <el-input type="textarea" v-model="order.landscapeProduction.buildingBlock.description"></el-input>
           </el-form-item>
-
           <el-form-item>
             <el-button type="primary" @click="updateOrder">保 存</el-button>
           </el-form-item>
@@ -741,43 +711,5 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  margin: 30px auto;
-  width: 48%;
-}
-.reference-map {
-  margin-top: 10px;
-  width: 148px;
-  height: 148px;
-}
-.el-radio {
-  margin: 10px 5px;
-}
-.flex {
-  display: flex;
-  line-height: 20px;
-}
-.flex > button {
-  margin-left: 10px;
-  height: 32px;
-}
-.reference-map-container {
-  position: relative;
-  width: 148px;
-  height: 148px;
-}
-.close {
-  position: absolute;
-  font-size: 20px;
-  color: #cccccc;
-  right: 0;
-  top: 10px;
-  cursor: pointer;
-}
-.prompt {
-  margin-left: 15px;
-  font-size: 12px;
-  color: #cccccc;
-  line-height: 30px;
-}
+@import "../../../../static/css/order_common.css";
 </style>

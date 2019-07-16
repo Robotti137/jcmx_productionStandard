@@ -53,7 +53,7 @@
           <div style="flex:1;" class="height center li-he border-l">项目沙盘</div>
           <div style="width:19%;" class="height center li-he border-l">项目沙盘</div>
           <div style="width:19%;" class="height center li-he border-l">升降设备</div>
-          <div style="width:19%;" class="height center li-he border-l">其他</div>
+          <div style="width:19%;" class="height center li-he border-l">其它</div>
         </div>
         <div class="flex border-b">
           <div style="width:19%;" class="height center li-he">模型数量</div>
@@ -123,24 +123,26 @@
             </div>
           </div>
         </div>
-        <div class="center li-he border-b">
-          <span :class="order.productionType === '玻璃罩' ? 'marqueed' : 'marquee'">玻璃罩</span>
-          <span
-            :class="order.productionType === '厚度及高度：厚度 12mm，高度400mm' ? 'marqueed' : 'marquee'"
-          >厚度及高度：厚度 12mm,高度400mm</span>
-          <span :class="order.productionType === '玻璃护栏' ? 'marqueed' : 'marquee'">玻璃护栏</span>
-          <span
-            :class="order.productionType === '厚度高度：根据地形高度制作300mm高 12mm厚' ? 'marqueed' : 'marquee'"
-          >厚度高度：根据地形高度制作300mm高 12mm厚</span>
-          <span :class="order.productionType === '其它' ? 'marqueed' : 'marquee'">其它</span>
-          <span
-            :class="order.productionType === '特殊要求：根据地形做护栏' ? 'marqueed' : 'marquee'"
-          >特殊要求：根据地形做护栏</span>
+        <div class="flex-j-i border-b" style="line-height:30px;">
+          <span :class="formatProductionType('玻璃罩')">玻璃罩</span>
+          <span :class="formatProductionType('自定义厚度及高度')">
+            厚度及高度：
+            <span
+              style="text-decoration:underline;"
+            >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          </span>
+          <span :class="formatProductionType('玻璃护栏')">玻璃护栏</span>
+          <span :class="formatProductionType('其它特殊要求')">
+            其它特殊要求：
+            <span
+              style="text-decoration:underline;"
+            >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          </span>
         </div>
         <h3 class="height border-b center li-he">模型底座要求</h3>
         <div class="flex border-b">
           <div class="li-he center border-r" style="width:19%;">项目沙盘</div>
-          <div class="li-he center" style="flex:1;">
+          <div class="flex-j-i" style="flex:1;">
             <span :class="formatProjectSandTableType('天然大理石')">天然大理石</span>
             <span :class="formatProjectSandTableType('颜色待定')">颜色待定</span>
             <span :class="formatProjectSandTableType('不锈钢')">不锈钢</span>
@@ -168,10 +170,19 @@
                 :src="requestUrl + '/upload/' + order.modelBase.referenceMap"
               />
             </div>
-            <div style="width:50%;max-width:50%;height:100%;">
-              <p>大理石型号：{{order.modelBase.marbleType}}</p>
-              <p>贴脚线灯光：{{order.modelBase.footLineLighting}}</p>
-              <p>其它要求说明：{{order.modelBase.description}}</p>
+            <div style="width:50%;max-width:50%;height:100%;" class="box-s">
+              <p style="margin-bottom:10px;">
+                大理石型号：
+                <span class="col-8">{{order.modelBase.marbleType}}</span>
+              </p>
+              <p style="margin-bottom:10px;">
+                贴脚线灯光：
+                <span class="col-8">{{order.modelBase.footLineLighting}}</span>
+              </p>
+              <p>
+                其它要求说明：
+                <span class="col-8">{{order.modelBase.description}}</span>
+              </p>
             </div>
           </div>
         </div>
@@ -192,34 +203,25 @@
                 :src="requestUrl + '/upload/' + order.buildingProduction.facade.referenceMap"
               />
             </div>
-            <div style="width:50%;max-width:50%;height:100%;">
-              <p>
-                <span
-                  :class="order.buildingProduction.facade.type === '外墙写实表现' ? 'marqueed' : 'marquee'"
-                >外墙写实表现</span>
-                <span
-                  :class="order.buildingProduction.facade.type === '镜面' ? 'marqueed' : 'marquee'"
-                >镜面</span>
-                <span
-                  :class="order.buildingProduction.facade.type === '幕墙玻璃' ? 'marqueed' : 'marquee'"
-                >幕墙玻璃</span>
-                <span
-                  :class="order.buildingProduction.facade.type === '木质' ? 'marqueed' : 'marquee'"
-                >木质</span>
-                <span
-                  :class="order.buildingProduction.facade.type === '水钻' ? 'marqueed' : 'marquee'"
-                >水钻</span>
-                <span
-                  :class="order.buildingProduction.facade.type === '外墙磨砂' ? 'marqueed' : 'marquee'"
-                >外墙磨砂</span>
+            <div class="box-s" style="width:50%;max-width:50%;height:100%;">
+              <p style="margin-bottom:10px;">
+                <span :class="formatbuildingProductionFacade('外墙写实表现')">外墙写实表现</span>
+                <span :class="formatbuildingProductionFacade('镜面')">镜面</span>
+                <span :class="formatbuildingProductionFacade('幕墙玻璃')">幕墙玻璃</span>
+                <span :class="formatbuildingProductionFacade('木质')">木质</span>
+                <span :class="formatbuildingProductionFacade('水钻')">水钻</span>
+                <span :class="formatbuildingProductionFacade('外墙磨砂')">外墙磨砂</span>
               </p>
-              <p>其它要求说明：{{order.buildingProduction.facade.description}}</p>
+              <p>
+                其它要求说明：
+                <span class="col-8">{{order.buildingProduction.facade.description}}</span>
+              </p>
             </div>
           </div>
         </div>
         <div class="flex border-b">
           <div class="li-he center border-r" style="width:19%;">项目沙盘</div>
-          <div class="li-he center" style="flex:1;">
+          <div class="flex-j-i" style="flex:1;">
             <span :class="order.buildingProduction.abs === 'ABS1.0' ? 'marqueed' : 'marquee'">ABS1.0</span>
             <span :class="order.buildingProduction.abs === 'ABS1.2' ? 'marqueed' : 'marquee'">ABS1.2</span>
             <span :class="order.buildingProduction.abs === 'ABS1.5' ? 'marqueed' : 'marquee'">ABS1.5</span>
@@ -248,19 +250,13 @@
                 :src="requestUrl + '/upload/' + order.buildingProduction.innerFacade.referenceMap"
               />
             </div>
-            <div style="width:50%;max-width:50%;height:100%;">
-              <p>
-                <span
-                  :class="order.buildingProduction.innerFacade.type === '万家灯动态控制' ? 'marqueed' : 'marquee'"
-                >万家灯动态控制</span>
-                <span
-                  :class="order.buildingProduction.innerFacade.type === '透明玻璃灯板' ? 'marqueed' : 'marquee'"
-                >透明玻璃灯板</span>
-                <span
-                  :class="order.buildingProduction.innerFacade.type === '整体透暖色天花灯' ? 'marqueed' : 'marquee'"
-                >整体透暖色天花灯</span>
+            <div style="width:50%;max-width:50%;height:100%;" class="box-s">
+              <p style="margin-bottom:10px;">
+                <span :class="formatbuildingProductionInnerFacade('万家灯动态控制')">万家灯动态控制</span>
+                <span :class="formatbuildingProductionInnerFacade('透明玻璃灯板')">透明玻璃灯板</span>
+                <span :class="formatbuildingProductionInnerFacade('整体透暖色天花灯')">整体透暖色天花灯</span>
               </p>
-              <p>
+              <p style="margin-bottom:10px;">
                 建筑内部灯光：
                 <br />
                 <span
@@ -273,7 +269,7 @@
                   :class="order.buildingProduction.innerFacade.internalLight   === '二维灯光' ? 'marqueed' : 'marquee'"
                 >二维灯光</span>
               </p>
-              <p>
+              <p style="margin-bottom:10px;">
                 建筑轮廓灯光：
                 <br />
                 <span
@@ -286,7 +282,10 @@
                   :class="order.buildingProduction.innerFacade.contourLight   === '全彩二维' ? 'marqueed' : 'marquee'"
                 >全彩二维</span>
               </p>
-              <p>其它要求说明：{{order.buildingProduction.innerFacade.description}}</p>
+              <p>
+                其它要求说明：
+                <span class="col-8">{{order.buildingProduction.innerFacade.description}}</span>
+              </p>
             </div>
           </div>
         </div>
@@ -306,44 +305,31 @@
                 :src="requestUrl + '/upload/' + order.buildingProduction.businessFacade.referenceMap"
               />
             </div>
-            <div style="width:50%;max-width:50%;height:100%;">
-              <p>
+            <div style="width:50%;max-width:50%;height:100%;" class="box-s">
+              <p style="margin-bottom:10px;">
                 <span
-                  :class="order.buildingProduction.businessFacade.type === '商业写实制作，内部按甲方平面要求布局' ? 'marqueed' : 'marquee'"
+                  :class="formatbuildingProductionBusinessFacade('商业写实制作，内部按甲方平面要求布局')"
                 >商业写实制作，内部按甲方平面要求布局</span>
-                <span
-                  :class="order.buildingProduction.businessFacade.type === '外墙写实表现' ? 'marqueed' : 'marquee'"
-                >外墙写实表现</span>
-                <span
-                  :class="order.buildingProduction.businessFacade.type   === '商业支撑剖开制作' ? 'marqueed' : 'marquee'"
-                >商业支撑剖开制作</span>
-                <span
-                  :class="order.buildingProduction.businessFacade.type   === '镜面' ? 'marqueed' : 'marquee'"
-                >镜面</span>
-                <span
-                  :class="order.buildingProduction.businessFacade.type   === '幕墙玻璃' ? 'marqueed' : 'marquee'"
-                >幕墙玻璃</span>
-                <span
-                  :class="order.buildingProduction.businessFacade.type   === '木质' ? 'marqueed' : 'marquee'"
-                >木质</span>
-                <span
-                  :class="order.buildingProduction.businessFacade.type   === '水钻' ? 'marqueed' : 'marquee'"
-                >水钻</span>
-                <span
-                  :class="order.buildingProduction.businessFacade.type   === '外墙磨砂' ? 'marqueed' : 'marquee'"
-                >外墙磨砂</span>
-                <span
-                  :class="order.buildingProduction.businessFacade.type   === '商业镜面勾线，屋面屋顶花园' ? 'marqueed' : 'marquee'"
-                >商业镜面勾线，屋面屋顶花园</span>
+                <span :class="formatbuildingProductionBusinessFacade('外墙写实表现')">外墙写实表现</span>
+                <span :class="formatbuildingProductionBusinessFacade('商业支撑剖开制作')">商业支撑剖开制作</span>
+                <span :class="formatbuildingProductionBusinessFacade('镜面')">镜面</span>
+                <span :class="formatbuildingProductionBusinessFacade('幕墙玻璃')">幕墙玻璃</span>
+                <span :class="formatbuildingProductionBusinessFacade('木质')">木质</span>
+                <span :class="formatbuildingProductionBusinessFacade('水钻')">水钻</span>
+                <span :class="formatbuildingProductionBusinessFacade('外墙磨砂')">外墙磨砂</span>
+                <span :class="formatbuildingProductionBusinessFacade('商业镜面勾线，屋面屋顶花园')">商业镜面勾线，屋面屋顶花园</span>
               </p>
-              <p>其它要求说明：{{order.buildingProduction.businessFacade.description}}</p>
+              <p>
+                其它要求说明：
+                <span class="col-8">{{order.buildingProduction.businessFacade.description}}</span>
+              </p>
             </div>
           </div>
         </div>
         <h3 class="height border-b center li-he">景观制作要求</h3>
         <div class="flex border-b">
           <div class="li-he center border-r" style="width:19%;">景观表现</div>
-          <div class="li-he center" style="flex:1;">
+          <div class="flex-j-i" style="flex:1;">
             <span
               :class="order.landscapeProduction.landscapePerformance   === '无地形' ? 'marqueed' : 'marquee'"
             >无地形</span>
@@ -360,19 +346,13 @@
         </div>
         <div class="flex border-b">
           <div class="li-he center border-r" style="width:19%;line-height:100px;">园林风光</div>
-          <div class="li-he center" style="flex:1;">
-            <div class="height border-b" style="width:100%;">
-              <span
-                :class="order.landscapeProduction.gardenScenery   === '8mm高仿真草坪' ? 'marqueed' : 'marquee'"
-              >8mm高仿真草坪</span>
+          <div class="center" style="flex:1;">
+            <div class="height li-he border-b" style="width:100%;">
+              <span :class="formatlandscapeProductionGardenScenery('8mm高仿真草坪')">8mm高仿真草坪</span>
             </div>
-            <div class="height" style="width:100%;">
-              <span
-                :class="order.landscapeProduction.gardenScenery   === '建筑屋顶绿化' ? 'marqueed' : 'marquee'"
-              >建筑屋顶绿化</span>
-              <span
-                :class="order.landscapeProduction.gardenScenery    === '其它（铺砖、种植按照甲方提供景观图纸制作（提供资料））' ? 'marqueed' : 'marquee'"
-              >
+            <div class="li-he" style="width:100%;">
+              <span :class="formatlandscapeProductionGardenScenery('建筑屋顶绿化')">建筑屋顶绿化</span>
+              <span :class="formatlandscapeProductionGardenScenery('其它（铺砖、种植按照甲方提供景观图纸制作（提供资料））')">
                 其它
                 <span style="text-decoration:underline;">铺砖、种植按照甲方提供景观图纸制作</span>（提供资料）
               </span>
@@ -395,36 +375,27 @@
                 :src="requestUrl + '/upload/' + order.landscapeProduction.landscapeRoad.referenceMap"
               />
             </div>
-            <div style="width:50%;max-width:50%;height:100%;">
-              <p>
+            <div style="width:50%;max-width:50%;height:100%;" class="box-s">
+              <p style="margin-bottom:10px;">
                 景观道路：
                 <br />
-                <span
-                  :class="order.landscapeProduction.landscapeRoad.type === '亚克力道路（汽车打灯）' ? 'marqueed' : 'marquee'"
-                >亚克力道路（汽车打灯）</span>
-                <span
-                  :class="order.landscapeProduction.landscapeRoad.type === '边预埋蓝色灯带' ? 'marqueed' : 'marquee'"
-                >边预埋蓝色灯带</span>
-                <span
-                  :class="order.landscapeProduction.landscapeRoad.type   === '边预埋其他颜色灯带' ? 'marqueed' : 'marquee'"
-                >边预埋____色灯带</span>
+                <span :class="formatlandscapeProductionLandscapeRoadType('亚克力道路（汽车打灯）')">亚克力道路（汽车打灯）</span>
+                <span :class="formatlandscapeProductionLandscapeRoadType('边预埋蓝色灯带')">边预埋蓝色灯带</span>
+                <span :class="formatlandscapeProductionLandscapeRoadType('边预埋其它颜色灯带')">边预埋____色灯带</span>
               </p>
-              <p>其它要求说明：{{order.landscapeProduction.landscapeRoad.description}}</p>
+              <p>
+                其它要求说明：
+                <span class="col-8">{{order.landscapeProduction.landscapeRoad.description}}</span>
+              </p>
             </div>
           </div>
         </div>
         <div class="flex border-b">
           <div class="li-he center border-r" style="width:19%;">地形表现</div>
-          <div class="li-he center" style="flex:1;">
-            <span
-              :class="order.landscapeProduction.terrainPerformance === '常规表现' ? 'marqueed' : 'marquee'"
-            >常规表现</span>
-            <span
-              :class="order.landscapeProduction.terrainPerformance === '等高线表现' ? 'marqueed' : 'marquee'"
-            >等高线表现</span>
-            <span
-              :class="order.landscapeProduction.terrainPerformance === '其它（参考照片）' ? 'marqueed' : 'marquee'"
-            >
+          <div class="flex-j-i" style="flex:1;">
+            <span :class="formatlandscapeProductionTerrainPerformance('常规表现')">常规表现</span>
+            <span :class="formatlandscapeProductionTerrainPerformance('等高线表现')">等高线表现</span>
+            <span :class="formatlandscapeProductionTerrainPerformance('其它（参考照片）')">
               其它
               <span
                 style="text-decoration:underline;"
@@ -434,7 +405,7 @@
         </div>
         <div class="flex border-b">
           <div class="li-he center border-r" style="width:19%;">地形表现</div>
-          <div class="li-he center" style="flex:1;">
+          <div class="flex-j-i" style="flex:1;">
             <span :class="formatLandscapeLight('地灯')">地灯</span>
             <span :class="formatLandscapeLight('路灯')">路灯</span>
             <span :class="formatLandscapeLight('庭院灯')">庭院灯</span>
@@ -458,8 +429,8 @@
                 :src="requestUrl + '/upload/' + order.landscapeProduction.WaterPerformanceLight.referenceMap"
               />
             </div>
-            <div style="width:50%;max-width:50%;height:100%;">
-              <p>
+            <div style="width:50%;max-width:50%;height:100%;" class="box-s">
+              <p style="margin-bottom:10px;">
                 <span
                   :class="order.landscapeProduction.WaterPerformanceLight.type === '亚克力水面' ? 'marqueed' : 'marquee'"
                 >亚克力水面</span>
@@ -470,12 +441,17 @@
                   :class="order.landscapeProduction.WaterPerformanceLight.type === 'LED水' ? 'marqueed' : 'marquee'"
                 >LED水</span>
               </p>
-              <p>其它要求说明：{{order.landscapeProduction.WaterPerformanceLight.description}}</p>
+              <p>
+                其它要求说明：
+                <span
+                  class="col-8"
+                >{{order.landscapeProduction.WaterPerformanceLight.description}}</span>
+              </p>
             </div>
           </div>
         </div>
         <div class="flex border-b">
-          <div class="li-he center border-r" style="width:19%;line-height:100px;">水晶及其他表现方式灯光方式</div>
+          <div class="li-he center border-r" style="width:19%;line-height:100px;">水晶及其它表现方式灯光方式</div>
           <div class="center" style="flex:1;line-height:50px;">
             <div class="height border-b" style="width:100%;">
               <span :class="formatCrystalPerformanceLight('透明水晶')">透明水晶</span>（
@@ -513,8 +489,11 @@
                 :src="requestUrl + '/upload/' + order.landscapeProduction.buildingBlock.referenceMap"
               />
             </div>
-            <div style="width:50%;max-width:50%;height:100%;">
-              <p>其它要求说明：{{order.landscapeProduction.buildingBlock.description}}</p>
+            <div style="width:50%;max-width:50%;height:100%;" class="box-s">
+              <p>
+                其它要求说明：
+                <span class="col-8">{{order.landscapeProduction.buildingBlock.description}}</span>
+              </p>
             </div>
           </div>
         </div>
@@ -586,6 +565,104 @@ export default {
       const { order } = this;
       let className;
       order.landscapeProduction.crystalPerformanceLight.forEach(item => {
+        if (item === str) {
+          className = "marqueed";
+        }
+      });
+      if (className) {
+        return className;
+      } else {
+        return "marquee";
+      }
+    },
+    formatProductionType(str) {
+      const { order } = this;
+      let className;
+      order.productionType.forEach(item => {
+        if (item === str) {
+          className = "marqueed";
+        }
+      });
+      if (className) {
+        return className;
+      } else {
+        return "marquee";
+      }
+    },
+    formatbuildingProductionFacade(str) {
+      const { order } = this;
+      let className;
+      order.buildingProduction.facade.type.forEach(item => {
+        if (item === str) {
+          className = "marqueed";
+        }
+      });
+      if (className) {
+        return className;
+      } else {
+        return "marquee";
+      }
+    },
+    formatbuildingProductionInnerFacade(str) {
+      const { order } = this;
+      let className;
+      order.buildingProduction.innerFacade.type.forEach(item => {
+        if (item === str) {
+          className = "marqueed";
+        }
+      });
+      if (className) {
+        return className;
+      } else {
+        return "marquee";
+      }
+    },
+    formatbuildingProductionBusinessFacade(str) {
+      const { order } = this;
+      let className;
+      order.buildingProduction.businessFacade.type.forEach(item => {
+        if (item === str) {
+          className = "marqueed";
+        }
+      });
+      if (className) {
+        return className;
+      } else {
+        return "marquee";
+      }
+    },
+    formatlandscapeProductionGardenScenery(str) {
+      const { order } = this;
+      let className;
+      order.landscapeProduction.gardenScenery.forEach(item => {
+        if (item === str) {
+          className = "marqueed";
+        }
+      });
+      if (className) {
+        return className;
+      } else {
+        return "marquee";
+      }
+    },
+    formatlandscapeProductionLandscapeRoadType(str) {
+      const { order } = this;
+      let className;
+      order.landscapeProduction.landscapeRoad.type.forEach(item => {
+        if (item === str) {
+          className = "marqueed";
+        }
+      });
+      if (className) {
+        return className;
+      } else {
+        return "marquee";
+      }
+    },
+    formatlandscapeProductionTerrainPerformance(str) {
+      const { order } = this;
+      let className;
+      order.landscapeProduction.terrainPerformance.forEach(item => {
         if (item === str) {
           className = "marqueed";
         }

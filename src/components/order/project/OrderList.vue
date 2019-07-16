@@ -44,7 +44,7 @@ export default {
         return;
       }
 
-      this.$confirm("此操作将删除此制作单,且后续不可恢复,是否继续?", "提示", {
+      this.$confirm("此操作将删除此开工单,且后续不可恢复,是否继续?", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning"

@@ -1,0 +1,47 @@
+.container {
+    margin: 30px auto;
+    width: 60%;
+}
+
+.reference-map {
+    margin-top: 10px;
+    width: 148px;
+    height: 148px;
+}
+
+.el-radio {
+    margin: 10px 5px;
+}
+
+.flex {
+    display: flex;
+    line-height: 20px;
+}
+
+.flex>button {
+    margin-left: 10px;
+    height: 32px;
+}
+
+.reference-map-container {
+    position: relative;
+    margin-left: 5px;
+    width: 148px;
+    height: 148px;
+}
+
+.close {
+    position: absolute;
+    font-size: 20px;
+    color: #cccccc;
+    right: 0;
+    top: 10px;
+    cursor: pointer;
+}
+
+.prompt {
+    margin-left: 15px;
+    font-size: 12px;
+    color: #cccccc;
+    line-height: 30px;
+}

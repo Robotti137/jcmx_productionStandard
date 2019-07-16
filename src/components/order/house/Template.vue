@@ -56,7 +56,7 @@
           <div style="flex:1;" class="height center li-he border-l">项目沙盘</div>
           <div style="width:19%;" class="height center li-he border-l">项目沙盘</div>
           <div style="width:19%;" class="height center li-he border-l">升降设备</div>
-          <div style="width:19%;" class="height center li-he border-l">其他</div>
+          <div style="width:19%;" class="height center li-he border-l">其它</div>
         </div>
         <div class="flex border-b">
           <div style="width:19%;" class="height center li-he">模型数量</div>
@@ -130,26 +130,23 @@
             </div>
           </div>
         </div>
-
         <div class="flex-j-i border-b" style="line-height:30px;">
-          <span :class="houseOrder.productionType === '玻璃罩' ? 'marqueed' : 'marquee'">玻璃罩</span>
-          <span :class="houseOrder.productionType === '自定义厚度及高度' ? 'marqueed' : 'marquee'">
+          <span :class="formatProductionType('玻璃罩')">玻璃罩</span>
+          <span :class="formatProductionType('自定义厚度及高度')">
             厚度及高度：
             <span
               style="text-decoration:underline;"
             >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
           </span>
-          <span :class="houseOrder.productionType === '玻璃护栏' ? 'marqueed' : 'marquee'">玻璃护栏</span>
-          <span :class="houseOrder.productionType === '其他特殊要求' ? 'marqueed' : 'marquee'">
+          <span :class="formatProductionType('玻璃护栏')">玻璃护栏</span>
+          <span :class="formatProductionType('其它特殊要求')">
             其它特殊要求：
             <span
               style="text-decoration:underline;"
             >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
           </span>
         </div>
-
         <h3 class="height border-b center li-he">模型底座要求</h3>
-
         <div class="flex height li-he border-b center">
           <div style="width:19%;" class="border-r">户型沙盘</div>
           <div style="flex:1;" class="flex-j-i">
@@ -163,7 +160,6 @@
             <span :class="formatHouseholdTandTable('其它')">其它</span>
           </div>
         </div>
-
         <div class="flex height li-he border-b center">
           <div style="width:19%;" class="border-r">户型模型</div>
           <div style="flex:1;" class="flex-j-i">
@@ -177,7 +173,6 @@
             <span :class="formatHouseModel('其它')">其它</span>
           </div>
         </div>
-
         <div class="flex border-b" style="min-height:200px;">
           <div
             style="width:19%;align-items:center;justify-content: center"
@@ -199,14 +194,11 @@
             </div>
           </div>
         </div>
-
         <div
           class="center border-b"
           style="line-height:40px;"
         >变更说明：制作完成或者制作过程中：1.各户修改 2.沟通原因 3.质量问题导致增加工作量 须补充 （项目修改通知单）</div>
-
         <h3 class="height border-b center li-he">户型制作要求</h3>
-
         <div class="flex height li-he border-b center">
           <div style="width:19%;" class="border-r">户型风格</div>
           <div style="flex:1;" class="flex-j-i">
@@ -225,7 +217,6 @@
             <span :class="formatHouseStyle('其它(参照图片)')">其它(参照图片)</span>
           </div>
         </div>
-
         <div class="flex height li-he border-b center">
           <div style="width:19%;" class="border-r">办公及酒店风格</div>
           <div style="flex:1;" class="flex-j-i">
@@ -244,7 +235,6 @@
             <span :class="formatOfficeHotelStyle('其它(参照图片)')">其它(参照图片)</span>
           </div>
         </div>
-
         <div class="flex li-he border-b center">
           <div style="width:19%;line-height:60px;" class="border-r">平层户型制作要求</div>
           <div style="flex:1;">
@@ -272,7 +262,6 @@
             </div>
           </div>
         </div>
-
         <div class="flex li-he border-b center">
           <div style="width:19%;line-height:60px;" class="border-r">跃层户型制作要求</div>
           <div style="flex:1;">
@@ -300,7 +289,6 @@
             </div>
           </div>
         </div>
-
         <div class="flex height li-he border-b center">
           <div style="width:19%;" class="border-r">户型及单体内部灯光</div>
           <div style="flex:1;" class="flex-j-i">
@@ -310,7 +298,6 @@
             <span :class="formatHouseLight('节点灯光')">节点灯光</span>
           </div>
         </div>
-
         <div class="flex height li-he border-b center">
           <div style="width:19%;" class="border-r">家装布置平面彩图</div>
           <div style="flex:1;" class="flex-j-i">
@@ -328,7 +315,6 @@
             >无(参照效果图)</span>
           </div>
         </div>
-
         <div class="flex height li-he border-b center">
           <div style="width:19%;" class="border-r">制作效果等级</div>
           <div style="flex:1;" class="flex-j-i">
@@ -343,14 +329,12 @@
             >精品精装</span>
           </div>
         </div>
-
         <div class="flex border-b">
           <div style="width:19%;" class="border-r center flex-j-i">
-            <span>其他特殊要求及具体制作内容说明</span>
+            <span>其它特殊要求及具体制作内容说明</span>
           </div>
           <div style="flex:1;" class="box-s">{{houseOrder.houseType.claimSpecificDescription}}</div>
         </div>
-
         <div class="flex border-b" style="min-height:200px;">
           <div style="width:19%;" class="border-r center flex-j-i">
             <span>参考图片</span>
@@ -379,14 +363,12 @@
             </div>
           </div>
         </div>
-
         <div class="flex border-b">
           <div style="width:19%;" class="border-r center flex-j-i">
-            <span>其他特殊要求及建筑制作内容说明</span>
+            <span>其它特殊要求及建筑制作内容说明</span>
           </div>
           <div style="flex:1;" class="box-s">{{houseOrder.houseType.claimBuildDescription}}</div>
         </div>
-
         <div class="flex">
           <div style="width:19%;" class="height li-he border-r">
             <span class="i-b">业务员：</span>
@@ -510,6 +492,20 @@ export default {
       const { houseOrder } = this;
       let className;
       houseOrder.houseType.houseLight.forEach(item => {
+        if (item === str) {
+          className = "marqueed";
+        }
+      });
+      if (className) {
+        return className;
+      } else {
+        return "marquee";
+      }
+    },
+    formatProductionType(str) {
+      const { houseOrder } = this;
+      let className;
+      houseOrder.productionType.forEach(item => {
         if (item === str) {
           className = "marqueed";
         }

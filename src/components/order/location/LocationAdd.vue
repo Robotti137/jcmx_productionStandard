@@ -3,14 +3,13 @@
     <el-button type="primary" size="small" @click="locationAddDialogVisible = true">新增区位开工单</el-button>
     <el-dialog title="新增区位开工单" :visible.sync="locationAddDialogVisible" width="70%" append-to-body>
       <div class="container">
-        <el-form :model="locationData" label-width="155px" ref="houseForm">
+        <el-form :model="locationData" label-width="240px" ref="houseForm">
           <el-form-item label="文档编号：">
             <el-input type="text" size="small" v-model="locationData.documentNumber"></el-input>
           </el-form-item>
           <el-form-item label="项目名称：">
             <el-input type="text" size="small" v-model="locationData.projectName"></el-input>
           </el-form-item>
-
           <el-form-item label="下单日期：">
             <el-date-picker
               type="date"
@@ -42,7 +41,6 @@
             <el-input type="text" size="small" v-model="locationData.projectAddress"></el-input>
           </el-form-item>
           <h3 style="text-align:center">模型制作内容（模型范围示意图）</h3>
-
           <el-form-item label="项目沙盘："></el-form-item>
           <el-form-item>
             模型数量
@@ -85,7 +83,6 @@
               v-model="locationData.projectSandTable.innerDimension"
             ></el-input>
           </el-form-item>
-
           <el-form-item label="安装性质："></el-form-item>
           <el-form-item>
             模型数量
@@ -99,8 +96,7 @@
               <el-radio label="下沉安装"></el-radio>
             </el-radio-group>
           </el-form-item>
-
-          <el-form-item label="其他："></el-form-item>
+          <el-form-item label="其它："></el-form-item>
           <el-form-item>
             模型数量
             <br />
@@ -142,16 +138,14 @@
               v-model="locationData.other.innerDimension"
             ></el-input>
           </el-form-item>
-
           <el-form-item label-width="0">
-            <el-radio-group v-model="locationData.productionType">
-              <el-radio label="玻璃罩"></el-radio>
-              <el-radio label="玻璃护栏"></el-radio>
-              <el-radio label="自定义厚度及高度"></el-radio>
-              <el-radio label="其他特殊要求"></el-radio>
-            </el-radio-group>
+            <el-checkbox-group v-model="locationData.productionType">
+              <el-checkbox label="玻璃罩"></el-checkbox>
+              <el-checkbox label="玻璃护栏"></el-checkbox>
+              <el-checkbox label="自定义厚度及高度"></el-checkbox>
+              <el-checkbox label="其它特殊要求"></el-checkbox>
+            </el-checkbox-group>
           </el-form-item>
-
           <el-form-item label="区位沙盘：">
             <el-checkbox-group v-model="locationData.locationSandTable">
               <el-checkbox label="石材(人造)"></el-checkbox>
@@ -175,10 +169,9 @@
               <el-radio label="常规式"></el-radio>
             </el-radio-group>
           </el-form-item>
-          <el-form-item label="其他特殊要求及具体制作内容说明：">
+          <el-form-item label="其它特殊要求及具体制作内容说明：">
             <el-input type="textarea" v-model="locationData.claimSpecificDescription"></el-input>
           </el-form-item>
-
           <h3 style="text-align:center">区位模型制作要求</h3>
           <el-form-item label="区位表现方式：">
             <el-checkbox-group v-model="locationData.locationModelProduction.locationPerformance">
@@ -195,7 +188,6 @@
               <el-checkbox label="写实区位"></el-checkbox>
             </el-checkbox-group>
           </el-form-item>
-
           <el-form-item label="区位本案表现："></el-form-item>
           <el-form-item>
             插入参考图
@@ -242,7 +234,7 @@
               <el-checkbox label="透明水晶"></el-checkbox>
               <el-checkbox label="金色水晶"></el-checkbox>
               <el-checkbox label="琥珀色水晶"></el-checkbox>
-              <el-checkbox label="其他"></el-checkbox>
+              <el-checkbox label="其它"></el-checkbox>
             </el-checkbox-group>
           </el-form-item>
           <el-form-item>
@@ -253,7 +245,6 @@
               v-model="locationData.locationModelProduction.locationItselfPerformance.description"
             ></el-input>
           </el-form-item>
-
           <el-form-item label="区位灯光要求："></el-form-item>
           <el-form-item>
             插入参考图
@@ -261,7 +252,7 @@
             <div class="flex">
               <el-upload
                 :action="requestUrl + '/upload'"
-                :limit="1"
+                :limit="3"
                 accept=".png, .PNG, .jpg, .JPG, .jpeg, .JPEG"
                 :on-success="uploadLDLMPLLMap"
                 :before-upload="beforeUpload"
@@ -275,21 +266,51 @@
                 plain
                 @click="openGallery(5,locationData.locationModelProduction.locationLight)"
               >图库选择</el-button>
-              <span class="prompt">注：参考图只能插入一张,且大小不能超出2MB</span>
+              <span class="prompt">注：参考图最多插入三张,且大小不能超出2MB</span>
             </div>
-            <div
-              v-if="locationData.locationModelProduction.locationLight.referenceMap"
-              class="reference-map-container"
-            >
-              <i
-                class="el-icon-circle-close close"
-                @click="locationData.locationModelProduction.locationLight.referenceMap =''
-                ;$refs.uploadLDLMPLLMap.clearFiles()"
-              ></i>
-              <img
-                class="reference-map"
-                :src="requestUrl + '/upload/' + locationData.locationModelProduction.locationLight.referenceMap"
-              />
+            <div style="display:flex;">
+              <div
+                v-if="locationData.locationModelProduction.locationLight.referenceMap[0]"
+                class="reference-map-container"
+              >
+                <i
+                  class="el-icon-circle-close close"
+                  @click="locationData.locationModelProduction.locationLight.referenceMap.splice(0,1);
+                  $refs.uploadLDLMPLLMap.clearFiles()"
+                ></i>
+                <img
+                  class="reference-map"
+                  :src="requestUrl + '/upload/' + locationData.locationModelProduction.locationLight.referenceMap[0]"
+                />
+              </div>
+              <div
+                v-if="locationData.locationModelProduction.locationLight.referenceMap[1]"
+                class="reference-map-container"
+              >
+                <i
+                  class="el-icon-circle-close close"
+                  @click="locationData.locationModelProduction.locationLight.referenceMap.splice(1,1);
+                  $refs.uploadLDLMPLLMap.clearFiles()"
+                ></i>
+                <img
+                  class="reference-map"
+                  :src="requestUrl + '/upload/' + locationData.locationModelProduction.locationLight.referenceMap[1]"
+                />
+              </div>
+              <div
+                v-if="locationData.locationModelProduction.locationLight.referenceMap[2]"
+                class="reference-map-container"
+              >
+                <i
+                  class="el-icon-circle-close close"
+                  @click="locationData.locationModelProduction.locationLight.referenceMap.splice(2,1);
+                  $refs.uploadLDLMPLLMap.clearFiles()"
+                ></i>
+                <img
+                  class="reference-map"
+                  :src="requestUrl + '/upload/' + locationData.locationModelProduction.locationLight.referenceMap[2]"
+                />
+              </div>
             </div>
           </el-form-item>
           <el-form-item>
@@ -324,7 +345,7 @@
             ></el-input>
           </el-form-item>
           <el-form-item>
-            其他特殊要求及具体制作内容说明
+            其它特殊要求及具体制作内容说明
             <br />
             <el-input
               type="textarea"
@@ -342,7 +363,6 @@
               <el-radio label="其它"></el-radio>
             </el-radio-group>
           </el-form-item>
-
           <el-form-item label="园林风格：">
             <el-checkbox-group v-model="locationData.landscapeProduction.gardenStyle">
               <el-checkbox label="精诚景观"></el-checkbox>
@@ -353,7 +373,6 @@
               <el-checkbox label="局部现场取景写实制作(参照图片)"></el-checkbox>
             </el-checkbox-group>
           </el-form-item>
-
           <el-form-item label="景观道路：">
             <el-checkbox-group v-model="locationData.landscapeProduction.landscapeRoad">
               <el-checkbox label="沥青道路"></el-checkbox>
@@ -363,7 +382,6 @@
               <el-checkbox label="其它(参照图片)"></el-checkbox>
             </el-checkbox-group>
           </el-form-item>
-
           <el-form-item label="地形表现：">
             <el-checkbox-group v-model="locationData.landscapeProduction.terrainPerformance">
               <el-checkbox label="常规表现"></el-checkbox>
@@ -371,7 +389,6 @@
               <el-checkbox label="其它(参照图片)"></el-checkbox>
             </el-checkbox-group>
           </el-form-item>
-
           <el-form-item label="景观灯光：">
             <el-checkbox-group v-model="locationData.landscapeProduction.landscapeLight">
               <el-checkbox label="地灯"></el-checkbox>
@@ -398,7 +415,6 @@
               <el-checkbox label="其它(参照图片)"></el-checkbox>
             </el-checkbox-group>
           </el-form-item>
-
           <el-form-item label="水景表现及灯光："></el-form-item>
           <el-form-item>
             插入参考图
@@ -461,7 +477,6 @@
               v-model="locationData.landscapeProduction.waterPerformanceLight.description"
             ></el-input>
           </el-form-item>
-
           <el-form-item label="水晶及灯光方式：">
             <el-checkbox-group v-model="locationData.landscapeProduction.crystalLight">
               <el-checkbox label="平放"></el-checkbox>
@@ -489,7 +504,6 @@
               <el-checkbox label="琥珀水晶(商业水晶高度)"></el-checkbox>
             </el-checkbox-group>
           </el-form-item>
-
           <el-form-item label="体块：">
             <el-checkbox-group v-model="locationData.landscapeProduction.bodyBlock">
               <el-checkbox label="磨砂体块"></el-checkbox>
@@ -499,7 +513,6 @@
               <el-checkbox label="其它(提供照片)"></el-checkbox>
             </el-checkbox-group>
           </el-form-item>
-
           <el-form-item>
             插入参考图
             <br />
@@ -564,15 +577,13 @@
               </div>
             </div>
           </el-form-item>
-          <el-form-item label="其他特殊要求及建筑制作内容说明：">
+          <el-form-item label="其它特殊要求及建筑制作内容说明：">
             <el-input
               type="textarea"
               v-model="locationData.landscapeProduction.claimBuildDescription"
             ></el-input>
           </el-form-item>
-
           <h3 style="text-align:center">规划模型建筑制作要求</h3>
-
           <el-form-item label="建筑立面：">
             <el-checkbox-group v-model="locationData.buildingProduction.buildingFacade">
               <el-checkbox label="外墙写真表现"></el-checkbox>
@@ -587,7 +598,6 @@
               <el-checkbox label="幕墙喷色表现(甲方定色)"></el-checkbox>
             </el-checkbox-group>
           </el-form-item>
-
           <el-form-item label="建筑内部及外立面灯光：">
             <el-checkbox-group
               v-model="locationData.buildingProduction.buildingInteriorFacadeLight"
@@ -610,7 +620,6 @@
               <el-checkbox label="内部柱位竖向LED流星灯光(七彩)"></el-checkbox>
             </el-checkbox-group>
           </el-form-item>
-
           <el-form-item>
             插入参考图
             <br />
@@ -675,7 +684,6 @@
               </div>
             </div>
           </el-form-item>
-
           <el-form-item>
             <el-button type="primary" @click="addOrder">创 建</el-button>
           </el-form-item>
@@ -732,7 +740,7 @@ export default {
           externalDimensions: "",
           innerDimension: ""
         },
-        productionType: "",
+        productionType: [],
         locationSandTable: [],
         materialDescription: "",
         installationMethod: "",
@@ -746,7 +754,7 @@ export default {
           },
           locationLight: {
             type: [],
-            referenceMap: "",
+            referenceMap: [],
             description: ""
           },
           claimContentDescription: ""
@@ -813,8 +821,17 @@ export default {
         return;
       }
 
-      this.locationData.locationModelProduction.locationLight.referenceMap =
-        response.filename;
+      if (
+        this.locationData.locationModelProduction.locationLight.referenceMap ===
+        3
+      ) {
+        return;
+      }
+
+      this.locationData.locationModelProduction.locationLight.referenceMap = [
+        ...this.locationData.locationModelProduction.locationLight.referenceMap,
+        response.filename
+      ];
     },
     uploadLDLPWPLMap(response) {
       if (response.status !== 1) {
@@ -927,7 +944,7 @@ export default {
           externalDimensions: "",
           innerDimension: ""
         },
-        productionType: "",
+        productionType: [],
         locationSandTable: [],
         materialDescription: "",
         installationMethod: "",
@@ -941,7 +958,7 @@ export default {
           },
           locationLight: {
             type: [],
-            referenceMap: "",
+            referenceMap: [],
             description: ""
           },
           claimContentDescription: ""
@@ -977,44 +994,5 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  margin: 30px auto;
-  width: 48%;
-}
-.reference-map {
-  margin-top: 10px;
-  width: 148px;
-  height: 148px;
-}
-.el-radio {
-  margin: 10px 5px;
-}
-.flex {
-  display: flex;
-  line-height: 20px;
-}
-.flex > button {
-  margin-left: 10px;
-  height: 32px;
-}
-.reference-map-container {
-  position: relative;
-  margin-right: 7px;
-  width: 148px;
-  height: 148px;
-}
-.close {
-  position: absolute;
-  font-size: 20px;
-  color: #cccccc;
-  right: 0;
-  top: 10px;
-  cursor: pointer;
-}
-.prompt {
-  margin-left: 15px;
-  font-size: 12px;
-  color: #cccccc;
-  line-height: 30px;
-}
+@import "../../../../static/css/order_common.css";
 </style>

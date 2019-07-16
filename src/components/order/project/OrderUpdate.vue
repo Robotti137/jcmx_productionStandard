@@ -637,28 +637,77 @@ export default {
     ]),
     ...mapActions(["getOrderList"]),
     uploadMBMap(response) {
+      if (response.status !== 1) {
+        this.$notify.error({
+          title: "错误",
+          message: "图片上传失败"
+        });
+        return;
+      }
       this.order.modelBase.referenceMap = response.filename;
     },
     uploadBPFMap(response) {
+      if (response.status !== 1) {
+        this.$notify.error({
+          title: "错误",
+          message: "图片上传失败"
+        });
+        return;
+      }
       this.order.buildingProduction.facade.referenceMap = response.filename;
     },
     uploadBPIFMap(response) {
+      if (response.status !== 1) {
+        this.$notify.error({
+          title: "错误",
+          message: "图片上传失败"
+        });
+        return;
+      }
       this.order.buildingProduction.innerFacade.referenceMap =
         response.filename;
     },
     uploadBPBFMap(response) {
+      if (response.status !== 1) {
+        this.$notify.error({
+          title: "错误",
+          message: "图片上传失败"
+        });
+        return;
+      }
       this.order.buildingProduction.businessFacade.referenceMap =
         response.filename;
     },
     uploadIPLRMap(response) {
+      if (response.status !== 1) {
+        this.$notify.error({
+          title: "错误",
+          message: "图片上传失败"
+        });
+        return;
+      }
       this.order.landscapeProduction.landscapeRoad.referenceMap =
         response.filename;
     },
     uploadIPWPLMap(response) {
+      if (response.status !== 1) {
+        this.$notify.error({
+          title: "错误",
+          message: "图片上传失败"
+        });
+        return;
+      }
       this.order.landscapeProduction.WaterPerformanceLight.referenceMap =
         response.filename;
     },
     uploadIPBBMap(response) {
+      if (response.status !== 1) {
+        this.$notify.error({
+          title: "错误",
+          message: "图片上传失败"
+        });
+        return;
+      }
       this.order.landscapeProduction.buildingBlock.referenceMap =
         response.filename;
     },

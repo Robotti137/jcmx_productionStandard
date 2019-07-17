@@ -50,7 +50,7 @@
         </el-dropdown>
       </el-header>
 
-      <el-main style="padding:0;">
+      <el-main style="height:100%;padding:0;">
         <router-view></router-view>
       </el-main>
     </el-container>

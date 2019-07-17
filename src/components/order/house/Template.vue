@@ -93,7 +93,7 @@
             >景观：{{houseOrder.projectSandTable.landscape}}</span>
             <span class="i-b">建筑：{{houseOrder.projectSandTable.building}}</span>
           </div>
-          <div style="width:19%;" class="flex-j-i border-l">
+          <div class="flex-j-i border-l" style="justify-content:center;width:19%;">
             <span v-if="houseOrder.liftingEquipment.type === '直升'" class="marqueed">直升</span>
             <span v-else class="marquee">直升</span>
           </div>

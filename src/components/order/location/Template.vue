@@ -94,7 +94,7 @@
             >景观：{{locationOrder.projectSandTable.landscape}}</span>
             <span class="i-b">建筑：{{locationOrder.projectSandTable.building}}</span>
           </div>
-          <div style="width:19%;" class="flex-j-i border-l">
+          <div class="flex-j-i border-l" style="justify-content:center;width:19%;">
             <span v-if="locationOrder.installationNature.type === '底座安装'" class="marqueed">底座安装</span>
             <span v-else class="marquee">底座安装</span>
           </div>

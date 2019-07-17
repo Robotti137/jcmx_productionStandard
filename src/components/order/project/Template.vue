@@ -83,7 +83,7 @@
             <span class="i-b" style="margin-bottom:5px;">景观：{{order.projectSandTable.landscape}}</span>
             <span class="i-b">建筑：{{order.projectSandTable.building}}</span>
           </div>
-          <div style="width:19%;" class="flex-j-i border-l">
+          <div class="flex-j-i border-l" style="justify-content:center;width:19%;">
             <span v-if="order.liftingEquipment.type === '直升'" class="marqueed">直升</span>
             <span v-else class="marquee">直升</span>
           </div>

@@ -48,7 +48,7 @@
             </div>
             <div class="height li-he"></div>
           </div>
-          <div style="flex:1;" class="center li-he">{{houseOrder.projectAddress}}</div>
+          <div style="flex:1;" class="box-s">{{houseOrder.projectAddress}}</div>
         </div>
         <div class="height center li-he border-b">模型制作内容（模型范围示意图）</div>
         <div class="flex border-b">
@@ -82,19 +82,24 @@
           </div>
         </div>
         <div class="flex border-b">
-          <div style="width:19%;" class="height center li-he">模型比例</div>
-          <div style="flex:1;" class="height center li-he border-l"></div>
-          <div style="width:19%;" class="height center li-he border-l">
-            <span class="i-b" style="width:50%;">景观:{{houseOrder.projectSandTable.landscape}}</span>
-            <span class="i-b" style="width:50%;">建筑:{{houseOrder.projectSandTable.building}}</span>
+          <div style="width:19%;" class="flex-j-i">
+            <span>模型比例</span>
           </div>
-          <div style="width:19%;" class="height center li-he border-l">
+          <div style="flex:1;" class="height center li-he border-l"></div>
+          <div style="width:19%;" class="border-l">
+            <span
+              class="i-b"
+              style="margin-bottom:5px;"
+            >景观：{{houseOrder.projectSandTable.landscape}}</span>
+            <span class="i-b">建筑：{{houseOrder.projectSandTable.building}}</span>
+          </div>
+          <div style="width:19%;" class="flex-j-i border-l">
             <span v-if="houseOrder.liftingEquipment.type === '直升'" class="marqueed">直升</span>
             <span v-else class="marquee">直升</span>
           </div>
-          <div style="width:19%;" class="height center li-he border-l">
-            <span class="i-b" style="width:50%;">景观:{{houseOrder.other.landscape}}</span>
-            <span class="i-b" style="width:50%;">建筑:{{houseOrder.other.building}}</span>
+          <div style="width:19%;" class="border-l">
+            <span class="i-b" style="margin-bottom:5px;">景观：{{houseOrder.other.landscape}}</span>
+            <span class="i-b">建筑：{{houseOrder.other.building}}</span>
           </div>
         </div>
         <div class="flex border-b">
@@ -105,10 +110,10 @@
           </div>
           <div style="width:19%;" class="li-he border-l">
             <div class="height border-b">
-              <span class="i-b">外尺寸:{{houseOrder.projectSandTable.externalDimensions}}</span>
+              <span class="i-b">外尺寸：{{houseOrder.projectSandTable.externalDimensions}}</span>
             </div>
             <div class="height">
-              <span class="i-b">内尺寸:{{houseOrder.projectSandTable.innerDimension}}</span>
+              <span class="i-b">内尺寸：{{houseOrder.projectSandTable.innerDimension}}</span>
             </div>
           </div>
           <div style="width:19%;" class="center li-he border-l">
@@ -123,10 +128,10 @@
           </div>
           <div style="width:19%;" class="li-he border-l">
             <div class="height border-b">
-              <span class="i-b">外尺寸:{{houseOrder.other.externalDimensions}}</span>
+              <span class="i-b">外尺寸：{{houseOrder.other.externalDimensions}}</span>
             </div>
             <div class="height">
-              <span class="i-b">内尺寸:{{houseOrder.other.innerDimension}}</span>
+              <span class="i-b">内尺寸：{{houseOrder.other.innerDimension}}</span>
             </div>
           </div>
         </div>
@@ -521,6 +526,12 @@ export default {
         .toBlob(document.getElementsByClassName("table-container")[0])
         .then(blob => {
           saveAs(blob, this.houseOrder.projectName);
+        })
+        .catch(error => {
+          this.$notify.error({
+            title: "错误",
+            message: "下载失败"
+          });
         });
     }
   }

@@ -176,7 +176,7 @@
                 <el-button size="small" type="primary" plain>自行上传</el-button>
               </el-upload>
               <el-button size="small" type="primary" plain @click="openGallery(6,modelBase)">图库选择</el-button>
-              <span class="prompt">注：参考图只能插入一张,且大小不能超出2MB</span>
+              <span class="prompt">注：参考图只能插入一张,且大小不能超出4MB</span>
             </div>
             <div v-if="modelBase.referenceMap" class="reference-map-container">
               <i
@@ -223,7 +223,7 @@
                 plain
                 @click="openGallery(1,buildingProduction.facade)"
               >图库选择</el-button>
-              <span class="prompt">注：参考图只能插入一张,且大小不能超出2MB</span>
+              <span class="prompt">注：参考图只能插入一张,且大小不能超出4MB</span>
             </div>
             <div v-if="buildingProduction.facade.referenceMap" class="reference-map-container">
               <i
@@ -282,7 +282,7 @@
                 plain
                 @click="openGallery(1,buildingProduction.innerFacade)"
               >图库选择</el-button>
-              <span class="prompt">注：参考图只能插入一张,且大小不能超出2MB</span>
+              <span class="prompt">注：参考图只能插入一张,且大小不能超出4MB</span>
             </div>
             <div v-if="buildingProduction.innerFacade.referenceMap" class="reference-map-container">
               <i
@@ -346,7 +346,7 @@
                 plain
                 @click="openGallery(1,buildingProduction.businessFacade)"
               >图库选择</el-button>
-              <span class="prompt">注：参考图只能插入一张,且大小不能超出2MB</span>
+              <span class="prompt">注：参考图只能插入一张,且大小不能超出4MB</span>
             </div>
             <div
               v-if="buildingProduction.businessFacade.referenceMap"
@@ -416,7 +416,7 @@
                 plain
                 @click="openGallery(2,landscapeProduction.landscapeRoad)"
               >图库选择</el-button>
-              <span class="prompt">注：参考图只能插入一张,且大小不能超出2MB</span>
+              <span class="prompt">注：参考图只能插入一张,且大小不能超出4MB</span>
             </div>
             <div
               v-if="landscapeProduction.landscapeRoad.referenceMap"
@@ -483,7 +483,7 @@
                 plain
                 @click="openGallery(2,landscapeProduction.WaterPerformanceLight)"
               >图库选择</el-button>
-              <span class="prompt">注：参考图只能插入一张,且大小不能超出2MB</span>
+              <span class="prompt">注：参考图只能插入一张,且大小不能超出4MB</span>
             </div>
             <div
               v-if="landscapeProduction.WaterPerformanceLight.referenceMap"
@@ -553,7 +553,7 @@
                 plain
                 @click="openGallery(2,landscapeProduction.buildingBlock)"
               >图库选择</el-button>
-              <span class="prompt">注：参考图只能插入一张,且大小不能超出2MB</span>
+              <span class="prompt">注：参考图只能插入一张,且大小不能超出4MB</span>
             </div>
             <div
               v-if="landscapeProduction.buildingBlock.referenceMap"
@@ -905,10 +905,10 @@ export default {
       };
     },
     beforeUpload(file) {
-      if (file.size / 1024 / 1024 > 2) {
+      if (file.size / 1024 / 1024 > 4) {
         this.$notify.error({
           title: "错误",
-          message: "图片大小不能超出2MB"
+          message: "图片大小不能超出4MB"
         });
         return false;
       }

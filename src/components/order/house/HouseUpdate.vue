@@ -191,7 +191,7 @@
                 plain
                 @click="openGallery(6,houseData.modelBase)"
               >图库选择</el-button>
-              <span class="prompt">注：参考图只能插入一张,且大小不能超出2MB</span>
+              <span class="prompt">注：参考图只能插入一张,且大小不能超出4MB</span>
             </div>
             <div v-if="houseData.modelBase.referenceMap" class="reference-map-container">
               <i
@@ -330,7 +330,7 @@
                 plain
                 @click="openGallery(4,houseData.houseType)"
               >图库选择</el-button>
-              <span class="prompt">注：参考图最多插入三张,且大小不能超出2MB</span>
+              <span class="prompt">注：参考图最多插入三张,且大小不能超出4MB</span>
             </div>
             <div style="display:flex;">
               <div v-if="houseData.houseType.referenceMap[0]" class="reference-map-container">
@@ -416,10 +416,10 @@ export default {
     ...houseMapActions(["getOrderList"]),
     ...houseMapMutations(["setHouseUpdateDialogVisible"]),
     beforeUpload(file) {
-      if (file.size / 1024 / 1024 > 2) {
+      if (file.size / 1024 / 1024 > 4) {
         this.$notify.error({
           title: "错误",
-          message: "图片大小不能超出2MB"
+          message: "图片大小不能超出4MB"
         });
         return false;
       }

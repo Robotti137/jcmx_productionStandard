@@ -1,6 +1,6 @@
 <template>
   <div class="login-background">
-    <p class="title" style="padding-top:70px;font-size:30px;">精诚模型智慧云平台</p>
+    <p class="title" style="padding-top:70px;font-size:30px;">精诚模型制作标准管理</p>
     <p class="title" style="margin-top:16px;font-size:18px;">KingSun Production Standard management</p>
     <div class="login-container">
       <div

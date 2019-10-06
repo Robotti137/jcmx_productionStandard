@@ -103,7 +103,7 @@ export default {
             this.$message({
               message: data.message,
               type,
-              customClass: "top"
+              customClass: "message-case"
             });
           });
         })

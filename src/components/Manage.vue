@@ -35,13 +35,13 @@
 
     <el-container>
       <el-header class="header-container">
-        <el-breadcrumb separator="/">
+        <el-breadcrumb separator="/" style="float:left; font-size:12px;">
           <template v-for="(value, name) in breadcrumb">
             <el-breadcrumb-item :to="{path:value}" :key="value">{{name}}</el-breadcrumb-item>
           </template>
         </el-breadcrumb>
-        <p style="position:absolute;left:50%;font-size:18px;font-weight:bold;">精诚模型制作标准管理系统</p>
-        <el-dropdown>
+        <p style="font-size:18px;font-weight:bold;">精诚模型制作标准管理系统</p>
+        <el-dropdown style="float:right;">
           <img src="../../static/img/default.jpg" class="avator el-dropdown-link" />
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item @click.native="changePwdDialogVisible = true">修改密码</el-dropdown-item>
@@ -138,7 +138,7 @@ export default {
           this.$message({
             message: data.message,
             type: "success",
-            customClass: "top"
+            customClass: "message-case"
           });
         }
       });
@@ -168,7 +168,7 @@ export default {
           this.$message({
             message: data.message,
             type,
-            customClass: "top"
+            customClass: "message-case"
           });
         });
       });
@@ -192,12 +192,11 @@ export default {
 
 <style>
 .header-container {
-  background-color: #eff2f7;
-  height: 60px;
   display: flex;
   justify-content: space-between;
+  background-color: #eff2f7;
   align-items: center;
-  padding-left: 20px;
+  height: 60px;
 }
 
 .el-aside {
@@ -234,10 +233,5 @@ export default {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-}
-
-.top {
-  top: 64px !important;
-  left: 52%;
 }
 </style>

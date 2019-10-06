@@ -1,34 +1,62 @@
 <template>
-  <div class="login-container">
-    <div class="form-container">
-      <div class="manage-tip">
-        <p style="font-size:36px;color:#fff;">用户注册</p>
-      </div>
+  <div class="login-register-background" style="box-sizing:border-box;padding-top:160px;">
+    <div class="login-register-region" style="margin: 0 auto;height:480px;">
+      <p class="title-login">注册</p>
       <el-form :model="registerInfo" :rules="rules" ref="registerForm">
         <el-form-item prop="account">
-          <el-input type="text" placeholder="账号" v-model="registerInfo.account"></el-input>
+          <el-input
+            class="round-input"
+            size="small"
+            type="text"
+            placeholder="账号"
+            v-model="registerInfo.account"
+          ></el-input>
         </el-form-item>
         <el-form-item prop="true_name">
-          <el-input type="text" placeholder="姓名" v-model="registerInfo.true_name"></el-input>
+          <el-input
+            type="text"
+            size="small"
+            v-model="registerInfo.true_name"
+            class="round-input"
+            placeholder="真实姓名"
+          ></el-input>
         </el-form-item>
         <el-form-item prop="phone">
-          <el-input type="text" placeholder="手机号码" v-model="registerInfo.phone"></el-input>
+          <el-input
+            type="tel"
+            class="round-input"
+            size="small"
+            placeholder="手机号码"
+            v-model="registerInfo.phone"
+          ></el-input>
         </el-form-item>
         <el-form-item prop="password">
-          <el-input type="password" placeholder="密码" v-model="registerInfo.password"></el-input>
+          <el-input
+            type="password"
+            size="small"
+            class="round-input"
+            placeholder="密码"
+            v-model="registerInfo.password"
+          ></el-input>
         </el-form-item>
         <el-form-item prop="confirmPassword">
-          <el-input type="password" placeholder="确认密码" v-model="registerInfo.confirmPassword"></el-input>
+          <el-input
+            type="password"
+            size="small"
+            class="round-input"
+            placeholder="确认密码"
+            v-model="registerInfo.confirmPassword"
+          ></el-input>
         </el-form-item>
-        <el-form-item style="margin-bottom:10px;">
-          <el-button type="primary" style="width:100%;" @click="registerUser">提交</el-button>
+        <el-form-item style="margin:10px 0;">
+          <el-button type="primary" class="login-btn" round @click="registerUser">提 交</el-button>
         </el-form-item>
       </el-form>
       <p style="text-align:right;">
         <a class="register-btn" @click="jumpLogin">已拥有账号？</a>
       </p>
-      <p class="remind" style="margin-top:10px;">温馨提示：</p>
-      <p class="remind">注册之后需要超级管理员审核通过才可登录</p>
+      <p class="remind center" style="margin-top:10px;">温馨提示：</p>
+      <p class="remind center">注册之后需要超级管理员审核通过才可登录</p>
     </div>
   </div>
 </template>
@@ -140,7 +168,8 @@ export default {
           }
           this.$message({
             message: data.message,
-            type
+            type,
+            customClass: "message-case"
           });
         });
       });
@@ -150,31 +179,82 @@ export default {
 </script>
 
 <style scoped>
-.login-container {
-  width: 100%;
+.login-register-background {
   height: 100%;
-  background-color: #324057;
+  background: url("../../static/img/background_img1.png") no-repeat center top;
+  background-size: 100% 100%;
 }
 
-.form-container {
-  width: 320px;
-  height: 420px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-top: -230px;
-  margin-left: -185px;
-  padding: 25px;
-  border-radius: 5px;
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
+}
+
+.title {
+  margin: 0;
   text-align: center;
-  background-color: #fff;
+  color: #2889ee;
 }
 
-.manage-tip {
-  position: absolute;
+.box-card {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.login-input {
+  width: 200px;
+}
+
+.login-btn {
   width: 100%;
-  top: -100px;
-  left: 0;
+}
+
+.login-title {
+  margin: 0 0 16px 0;
+  text-align: center;
+}
+
+.el-form-item {
+  margin-bottom: 14px;
+}
+
+.el-input__icon {
+  color: black;
+}
+
+.title-cn_name {
+  padding-top: 70px;
+  font-size: 30px;
+}
+
+.title-en_name {
+  margin-top: 16px;
+  font-size: 18px;
+}
+
+.side-picture {
+  z-index: 100;
+  padding: 7px;
+  background-color: #fff;
+  font-size: 0;
+  box-shadow: 4px -4px 4px rgba(40, 137, 238, 0.3);
+}
+
+.login-register-region {
+  box-sizing: border-box;
+  width: 350px;
+  height: 300px;
+  padding: 20px 40px;
+  background-color: #fff;
+  border: 1px solid #e4e4e4;
+}
+
+.title-login {
+  margin: 10px 0;
+  text-align: center;
+  font-size: 18px;
+  color: #2889ee;
 }
 
 .register-btn {
@@ -182,6 +262,7 @@ export default {
   color: #409eff;
   cursor: pointer;
 }
+
 .register-btn:hover {
   text-decoration: underline;
 }
@@ -189,5 +270,8 @@ export default {
 .remind {
   font-size: 12px;
   color: red;
+}
+.center {
+  text-align: center;
 }
 </style>

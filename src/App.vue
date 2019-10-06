@@ -25,4 +25,12 @@ ul{
   padding: 0;
   list-style: none;
 }
+.round-input input.el-input__inner {
+  border-radius:15px;
+}
+
+.message-case {
+  top: 50px !important;
+  left: 50% !important;
+}
 </style>
